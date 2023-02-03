@@ -1,0 +1,408 @@
+<div style="min-height: 100vh;" class="gForm  pb-5">
+    <app-navbar2></app-navbar2>
+    <div class="layer overflow-hidden">
+        <p-toast></p-toast>
+        <div style="width: 75%;" class="container row m-auto">
+            <div class="content">
+
+                <input type="radio" name="slider" checked id="personal" class="d-none">
+                <input type="radio" name="slider" id="contact" class="d-none">
+                <input type="radio" name="slider" id="change-pass" class="d-none">
+                <input type="radio" name="slider" id="Report" class="d-none">
+
+                <div class="list">
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="profile-img rounded-circle" style="width: 200px; height: 200px;">
+                                <div id="file_upload">
+                                    <img [src]="info?.avatar" width="200" height="200" class="profilePic">
+                                </div>
+                                <button style="background-color: #e6e6e6; width: 45px; height: 45px;" mat-mini-fab
+                                    (click)="inputField.click()">
+                                    <img src="../../assets/img/upload.png" class="profilei1">
+                                </button>
+                            </div>
+                            <input (change)="ownerAvatar($event)" #inputField type="file" hidden>
+                        </div>
+                    </div>
+                    <label for="personal" class="personal">
+                        <i class="profilei1  fas fa-user-circle  me-2"></i>
+                        <span class="title">Personal Information</span>
+                    </label>
+                    <label for="contact" class="contact">
+                        <span class="icon"><i class="fas fa-store me-2"></i></span>
+                        <span class="title">My Store</span>
+                    </label>
+                    <label for="change-pass" class="change-pass">
+                        <span class="icon"><i class="fas fa-lock me-2"></i></span>
+                        <span class="title">Change Password</span>
+                    </label>
+                    <label for="Report" class="Report">
+                        <span class="icon"><i class="fas fa-flag me-2"></i></span>
+                        <span class="title">Review</span>
+                    </label>
+                </div>
+                <div class="text-content">
+                    <form [formGroup]="newPersonal" (ngSubmit)="submitNewInfo(newPersonal)">
+                        <div class="personal text">
+                            <div style="padding: 55px 0;" class="my-box1">
+                                <h2 class="text-center mt-3"><img src="../../assets/img/name.png" width="42px" class="mb-2"> Personal Information</h2>
+                                <div class="hov">
+                                    <div class="brd mb-3"></div>
+                                    <div style="padding:0  80px;" class="row pb-3">
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="firstName">First Name</label>
+                                            <div class="wrap-input100">
+                                                <input class="input100" [value]="info?.firstName"
+                                                    formControlName="firstName" type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-user-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="lastName">Last Name</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.lastName"
+                                                    formControlName="lastName" type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-user-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="email">Email</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.email" formControlName="email"
+                                                    type="text" name="email">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="mobile_num">Mobile Number</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.mobile" formControlName="mobile"
+                                                    type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end">
+
+                                            <div>
+                                                <button type="submit"
+                                                    class="pBtn rounded-pill btn d-block mt-2 m-auto">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form [formGroup]="Store_info" (ngSubmit)="submitNewStore(Store_info)">
+                        <div class="contact text">
+                            <div class="my-box1 ">
+                                <h2 class="text-center mt-3"><img src="../../assets/img/store-name.png" width="42px" class="mb-2"> Store Information</h2>
+                                <div class="hov">
+                                    <div class="brd mb-3"></div>
+                                </div>
+                                <div style="padding:0  80px;" class="row pb-3">
+
+                                    <div class="col-md-6">
+                                        <label class="ms-4 mb-2">Store Name</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.Store.storeName"
+                                                formControlName="storeName" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fas fa-city"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ms-4 mb-2">Store Mobile</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.Store.storeMobile_1"
+                                                formControlName="storeMobile_1" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-facebook"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <mat-label class="ms-4 mb-2">Government</mat-label>
+                                        <p-dropdown formControlName="government" (onChange)="selectCity($event)"
+                                            [filter]="true" filterBy="name" optionValue="id" [dataKey]="info?.Store.government" [options]="Government" optionLabel="name">
+                                        </p-dropdown>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ms-4">City</label>
+                                        <p-dropdown formControlName="city" [options]="city"
+                                            optionValue="name" optionLabel="name" [dataKey]="selectedCity" [filter]="true"
+                                            filterBy="name">
+                                        </p-dropdown>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">Street</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.Store.street"
+                                                formControlName="street" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fas fa-store"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">Facebook Link</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.Store.facebookLink"
+                                                formControlName="facebookLink" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-facebook"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">WhatsApp</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.Store.whatsapp"
+                                                formControlName="whatsapp" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+
+                                        <div>
+                                            <button type="submit"
+                                                class="pBtn rounded-pill btn d-block mt-2 m-auto">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <form [formGroup]="newPass" (ngSubmit)="submitNewPass(newPass)">
+                        <div class="change-pass text">
+                            <div class="my-box1">
+                                <h2 class="text-center mt-3"><img src="../../assets/img/store-name.png" width="42px" class="mb-2"> Change Password</h2>
+                                <div class="">
+                                    <div class="hov">
+                                        <div class="brd mb-3"></div>
+                                    </div>
+                                    <div style="padding:0 80px;" class="row pb-3">
+
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">Current Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Enter Your Current Password"
+                                                    formControlName="current_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">New Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Enter New Password"
+                                                    formControlName="new_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">Confrim New
+                                                Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Re-type New Password"
+                                                    formControlName="new_confirm_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+
+                                            <div>
+                                                <button type="submit"
+                                                    class="pBtn rounded-pill btn d-block mt-2 m-auto">Change</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="Report text pb-5">
+
+                        <div class="parentPopup justify-content-center align-items-center">
+                            <div class="container popup px-5">
+                                <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                                    class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                                <div class="parentPopup justify-content-center align-items-center">
+                                    <div class="container popup pt-5 pb-4 px-5">
+                                        <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                                            class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                                        <h2 class="text-center mb-4"><img src="../../assets/img/seo.png"> Update Review
+                                        </h2>
+                                        <form [formGroup]="updateReviewForm" (ngSubmit)="changeReview()">
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="ms-3">Theif Name</label>
+                                                            <div class="wrap-input100 validate-input"
+                                                                data-validate="Valid email is required: ex@abc.xyz">
+                                                                <input formControlName="theifName"
+                                                                    [value]="singleReview?.theifName" type="text"
+                                                                    class="input100 my-2">
+                                                                <span class="focus-input100"></span>
+                                                                <span class="symbol-input100">
+                                                                    <i class="fas fa-user-alt"></i>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="ms-3">Theif Mobile</label>
+                                                            <div class="wrap-input100 validate-input"
+                                                                data-validate="Valid email is required: ex@abc.xyz">
+                                                                <input formControlName="theifMobile"
+                                                                    [value]="singleReview?.theifMobile"
+                                                                    type="text" class="input100 my-2">
+                                                                <span class="focus-input100"></span>
+                                                                <span class="symbol-input100">
+                                                                    <i class="fas fa-phone-alt"></i>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label class="ms-3">Theif NationalID</label>
+                                                            <div class="wrap-input100 validate-input"
+                                                                data-validate="Valid email is required: ex@abc.xyz">
+                                                                <input formControlName="theifNatID"
+                                                                    [value]="singleReview?.theifNatID" type="text"
+                                                                    class="input100 my-2">
+                                                                <span class="focus-input100"></span>
+                                                                <span class="symbol-input100">
+                                                                    <i class="fas fa-id-badge"></i>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12 mt-3">
+                                                            <div class="form-group">
+                                                                <label>Additional Info</label>
+                                                                <textarea formControlName="additional_info"
+                                                                    [value]="singleReview?.additional_info"
+                                                                    class="form-control my-2" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class=" d-flex justify-content-center align-items-center mt-3">
+                                                        <div class="input-file">
+                                                            <div id="oFile_upload" class="input-file-upload">
+                                                                <h4 class="text-center">Upload Thief Photo <small
+                                                                        class="me-2"
+                                                                        style="font-size: 8px;">(Optional)</small></h4>
+                                                                <img [src]="singleReview?.theifPicture">
+                                                                <input style="position: absolute; top: 0; left: 0;"
+                                                                    type='file' (change)="thiefAvatar($event)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                            <button type="submit"
+                                                class="btn rounded-pill popupSubmitBtn mt-3 px-4 py-2 d-block ms-auto">Update</button>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                    class="pBtn d-block ms-auto mt-3 rounded-pill btn ">update</button>
+
+
+
+                            </div>
+                        </div>
+
+                        <table class="mt-5">
+                            <thead>
+                                <tr>
+                                    <th class="roun">#ID</th>
+                                    <th>Picture</th>
+                                    <th>Full Name</th>
+                                    <th>National ID</th>
+                                    <th>Phone</th>
+                                    <th class="roun1">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let review of allReviews" class="ms-5">
+                                    <td class="">{{review.reviewID}}</td>
+                                    <td><img width="70px" height="70px" style="border-radius: 50%;"
+                                            [src]="review.theifPicture" alt="img"></td>
+                                    <td>{{review.theifName}}</td>
+                                    <td>{{review.theifNatID}}</td>
+                                    <td>{{review.theifMobile}}</td>
+                                    <td>
+                                        <button type="button" class="ptn-edit me-2" (click)="popup(review.reviewID)"><i
+                                                class="fas fa-edit me-1"></i></button>
+                                        <button (click)="deleteReview(review.reviewID)" type="button"
+                                            class="ptn-delete "> <i class="fas fa-trash-alt me-1"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="8" class="tablefoot"></td>
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

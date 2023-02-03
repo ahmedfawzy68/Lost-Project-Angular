@@ -1,0 +1,591 @@
+<div class="pb-5">
+    <p-toast></p-toast>
+    <app-navbar3></app-navbar3>
+    <div class="backBg">
+        <div class="layer pt-5">
+            <div style="min-height: 80vh;" class="my-box">
+                <mat-tab-group dynamicHeight mat-align-tabs="center">
+                    <mat-tab label="Serial Number">
+                        <div style="min-height: 463px;" class="row d-flex justify-content-center align-items-center">
+                            <div class="m-auto serialSearchSection">
+                                <div class="container mt-3">
+                                    <div class="row">
+                                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                            <img *ngIf="!reportBySerial && !serialNotFounded"
+                                                src="../../assets/img/before-search.png" class="w-100 default">
+                                            <img *ngIf="reportBySerial" src="../../assets/img/founded.png"
+                                                class="w-100 founded">
+                                            <img *ngIf="serialNotFounded && !reportBySerial"
+                                                src="../../assets/img/not-founded.png" class="w-100 notFounded">
+                                        </div>
+                                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                            <div *ngIf="reportBySerial" class="founded">
+                                                <div>
+                                                    <img [src]='reportBySerial.devicePicture' width="150px"
+                                                        height="225px" class="d-block mx-auto mb-3">
+                                                    <h5 style="text-transform: uppercase;" class="text-center">
+                                                        {{reportBySerial.brand}}
+                                                        {{reportBySerial.model}}</h5>
+                                                    <div class="row d-flex justify-content-center mt-4">
+                                                        <div class="col-6">
+                                                            <p *ngIf="reportBySerial.status"
+                                                                [style]="reportBySerial.status? 'color:green' : 'color:orange'">
+                                                                <i class="fas fa-circle me-2"></i>Submitted
+                                                            </p>
+                                                            <p *ngIf="!reportBySerial.status"
+                                                                [style]="reportBySerial.status? 'color:green' : 'color:orange'">
+                                                                <i class="fas fa-circle me-2"></i>Holding
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 d-flex justify-content-end">
+                                                            <p>
+                                                                <i
+                                                                    class="fas fa-qrcode me-2 text-info"></i>{{reportBySerial?.serialNumber}}
+                                                            </p>
+                                                        </div>
+                                                        <span>Report From:</span>
+                                                        <p style="text-transform: capitalize;"><i
+                                                                class="fas fa-map-marker-alt text-danger me-2"></i>{{reportBySerial.user.ContactInfo.government}}
+                                                            | {{reportBySerial.user.ContactInfo.city}} |
+                                                            {{reportBySerial.user.ContactInfo.street}}</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mt-3">
+                                                        <button (click)="goBack()"
+                                                            class="singleReportBtn rounded-pill btn d-block px-3 py-1"><i
+                                                                class="fas fa-arrow-left me-2"></i> Go Back</button>
+                                                        <button
+                                                            [routerLink]="['/singleReport', reportBySerial?.reportID]"
+                                                            class="singleReportBtn rounded-pill d-block ms-auto btn d-block px-3 py-1">Show
+                                                            More <i class="fas fa-arrow-right ms-2"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <form *ngIf="!reportBySerial" [formGroup]="searchSerialForm"
+                                                (ngSubmit)="submitSerialSearch(searchSerialForm)">
+                                                <div class="default" *ngIf="!reportBySerial && !serialNotFounded">
+                                                    <h1 class="grediant"
+                                                        style="font-size: 3.5rem; line-height: 0.9; font-weight: 900;">
+                                                        Hello There,</h1>
+                                                    <h1
+                                                        style="font-size: 3rem; color: #000; line-height: 0.8; font-weight: 900;">
+                                                        I'm Lost Bot</h1>
+                                                    <h3 style="text-transform: capitalize; font-weight: 200;"
+                                                        class="typing">enter unique serial number ...</h3>
+                                                    <br>
+                                                </div>
+                                                <div class="notFounded" *ngIf="serialNotFounded && !reportBySerial">
+                                                    <h1 class="grediant"
+                                                        style="font-size: 3.5rem; line-height: 0.9; font-weight: 900;">
+                                                        OPS! Sorry, </h1>
+                                                    <h1
+                                                        style="font-size: 3rem; color: #000; line-height: 0.8; font-weight: 900;">
+                                                        I Couldn't Find it</h1>
+                                                    <h3 style="text-transform: capitalize; font-weight: 200;"
+                                                        class="typing">Don't worry , try again ...</h3>
+                                                    <br>
+                                                </div>
+                                                <div class=" d-flex default">
+                                                    <div class="col-md-8">
+                                                        <div class="wrap-input100">
+                                                            <input  id="searchSerial"
+                                                                formControlName="serial" type="text"
+                                                                placeholder="IMEI / Serial Number "
+                                                                class="input100 w-100 rounded-pill">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-qrcode"></i>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-2 ms-2">
+                                                        <button type="submit" class=" submitBtn rounded-pill ms-auto"><i
+                                                                class="fas fa-search"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2 ms-2">
+                                                        <button (click)="qrPopup()" type="button"
+                                                            class="submitBtn rounded-pill ms-auto"><i
+                                                                class="fas fa-qrcode"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="display: none;" class="loader justify-content-center align-items-center">
+                                <div class="b">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div style="display: none;" class="parentPopup justify-content-center align-items-center">
+                                <div style="min-height: 700px;" class="container popup pt-5 pb-4 px-5">
+                                    <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                                        class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                                    <h2 class="text-center"><img src="../../assets/img/qr-code.png" width="36px"
+                                            class="mb-2"> Scan Now</h2>
+                                    <div class="row">
+                                        <div style="min-height: 500px;" class="uploaderSection">
+                                            <div class="col-md-6">
+                                                <img src="../../assets/img/QA engineers-amico.png" class="w-100">
+                                            </div>
+                                            <div class="col-md-6 justify-content-center align-items-center">
+                                                <div>
+                                                    <p class="form-label">Scan Your IMEI / Serial
+                                                        Number</p>
+                                                    <input class="form-control form-control-lg" 
+                                                        (change)="handleFileInput($event)" accept="image/*" type='file'
+                                                        id="fileInput" type="file">
+                                                    <div class="d-flex mt-4 justify-content-end">
+                                                        <div>
+                                                            <button [disabled]="!processNow" (click)="processOCR()"
+                                                                type="button" class="submitBtn rounded-pill">Proccess
+                                                                Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="hide" class="col-md-12 previewSection">
+                                            <div *ngIf="base64Image" class="row">
+                                                <div class="row text-center">
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <h5>Crop</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <h5>Preview</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="text-center fixedHeight col-md-6">
+                                                        <div>
+                                                            <div class="text-center" *ngIf="imageChangedEvent">
+                                                                <image-cropper [resizeToWidth]="300"
+                                                                    [resizeToHeight]="300" class="w-100"
+                                                                    [imageChangedEvent]="imageChangedEvent"
+                                                                    [maintainAspectRatio]="false" format="png"
+                                                                    (imageCropped)="imageCropped($event)">
+                                                                </image-cropper>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="text-center fixedHeight d-flex justify-content-center align-items-center col-md-6">
+                                                        <div class="text-center">
+                                                            <div>
+                                                                <img class="w-100" [src]="croppedImage" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between mt-5">
+                                                    <div class="input-group me-4">
+                                                        <div class="input-group-prepend">
+                                                        </div>
+                                                        <input type="text" class="form-control ps-4 rounded-pill w-100"
+                                                            id="validationCustomUsername" name="text" placeholder="text"
+                                                            disabled [(ngModel)]="ocrResult"
+                                                            aria-describedby="inputGroupPrepend" required>
+                                                    </div>
+                                                    <div class="ms-2 d-flex justify-content-center align-items-center">
+                                                        <button *ngIf="!isScanning" class="submitBtn rounded-pill"
+                                                            type="submit" (click)="scanOCR()">Scan</button>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div style="min-height: 500px; display: none;"
+                                        class="loaderPopup justify-content-center align-items-center">
+                                        <div class="justify-content-center align-items-center">
+                                            <div class="b">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Details">
+                        <div style="min-height: 463px;" class="row d-flex align-items-center">
+                            <div class="m-auto detailsSearchSection">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                            <img *ngIf="!detailsArray && !detailsNotFounded"
+                                                src="../../assets/img/before-search.png" class="w-100 default">
+                                            <img *ngIf="detailsArray" src="../../assets/img/founded.png"
+                                                class="w-100 founded">
+                                            <img *ngIf="detailsNotFounded && !detailsArray"
+                                                src="../../assets/img/not-founded.png" class="w-100 notFounded">
+                                        </div>
+                                        <div class="col-md-7 d-flex justify-content-center align-items-center">
+                                            <div class="founded" *ngIf="detailsArray">
+                                                <h1 class="grediant"
+                                                    style="font-size: 3.5rem; line-height: 0.9; font-weight: 900;">
+                                                    Great , I Found It</h1>
+                                                <h1
+                                                    style="font-size: 3rem; color: #000; line-height: 0.8; font-weight: 900;">
+                                                    Using selected options</h1>
+                                                <h3 style="text-transform: capitalize; font-weight: 200;"
+                                                    class="typing">This is a list matched devices ...</h3>
+                                                <br>
+                                            </div>
+                                            <form class="mt-4" *ngIf="!detailsArray" [formGroup]="searchDetailsForm"
+                                                (ngSubmit)="submitDetailsSearch(searchDetailsForm)">
+                                                <div class="default" *ngIf="!detailsArray && !detailsNotFounded">
+                                                    <h1 class="grediant"
+                                                        style="font-size: 3.5rem; line-height: 0.9; font-weight: 900;">
+                                                        Hello There,</h1>
+                                                    <h1
+                                                        style="font-size: 3rem; color: #000; line-height: 0.8; font-weight: 900;">
+                                                        Don't have serial number?</h1>
+                                                    <h3 style="text-transform: capitalize; font-weight: 200;"
+                                                        class="typing">try search with attributes ...</h3>
+                                                    <br>
+                                                </div>
+                                                <div class="notFounded" *ngIf="detailsNotFounded && !detailsArray">
+                                                    <h1 class="grediant"
+                                                        style="font-size: 3.5rem; line-height: 0.9; font-weight: 900;">
+                                                        OPS! Sorry, </h1>
+                                                    <h1
+                                                        style="font-size: 3rem; color: #000; line-height: 0.8; font-weight: 900;">
+                                                        I Couldn't Find it</h1>
+                                                    <h3 style="text-transform: capitalize; font-weight: 200;"
+                                                        class="typing">Don't worry , try again ...</h3>
+                                                    <br>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="type"
+                                                            [showClear]="true" (onChange)="selectBrand($event)"
+                                                            [options]="Type" placeholder="Type" optionValue="id"
+                                                            optionLabel="name">
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="brand"
+                                                            optionValue="id" (onChange)="selectModel($event)"
+                                                            [options]="Brand" placeholder="Brand" [showClear]="true"
+                                                            [group]="true">
+                                                            <ng-template let-items pTemplate="items">
+                                                                <div class="p-d-flex p-ai-center">
+                                                                    <div
+                                                                        class="row justify-content-start align-items-center">
+                                                                        <div class="col-3">
+                                                                            <img [src]="items.img"
+                                                                                [class]="'flag flag-' + items.value"
+                                                                                style="width: 20px" />
+                                                                        </div>
+                                                                        <div class="col-3">
+                                                                            <span>{{items.label}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                            <ng-template let-group pTemplate="group">
+                                                                <div class="p-d-flex p-ai-center">
+                                                                    <div
+                                                                        class="row justify-content-start align-items-center">
+                                                                        <div class="col-3">
+                                                                            <img [src]="group.img"
+                                                                                [class]="'flag flag-' + group.value"
+                                                                                style="width: 20px" />
+                                                                        </div>
+                                                                        <div class="col-3">
+                                                                            <span>{{group.label}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="model"
+                                                            optionValue="label" [showClear]="true" [options]="Model"
+                                                            placeholder="Model" [group]="true">
+                                                            <ng-template let-group pTemplate="group">
+                                                                <div
+                                                                    class="p-d-flex p-ai-center d-flex justify-content-start">
+                                                                    <img [src]="group.img"
+                                                                        [class]="'me-2 flag flag-' + group.value"
+                                                                        style="width: 20px" />
+                                                                    <span class="text-center">{{group.label}}</span>
+                                                                </div>
+                                                            </ng-template>
+                                                        </p-dropdown>
+                                                    </div>
+
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="color"
+                                                            [showClear]="true" [options]="Color" placeholder="Color"
+                                                            optionValue="name" optionLabel="name">
+                                                            <ng-template let-group pTemplate="icon">
+                                                                <div class="p-d-flex p-ai-center">
+                                                                    <div
+                                                                        class="row justify-content-start align-items-center">
+                                                                        <div style="height: 24px; border-radius: 50%; border: 1px solid #666;"
+                                                                            [style.background]="group.icon"
+                                                                            class="col-1">
+                                                                        </div>
+                                                                        <div class="col-3">
+                                                                            <span>{{group.name}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="RAM"
+                                                            [showClear]="true" [options]="RAM" placeholder="RAM"
+                                                            optionValue="value" optionLabel="name">
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-4 my-3">
+                                                        <p-dropdown formControlName="ROM"
+                                                            [showClear]="true" [options]="ROM" placeholder="ROM"
+                                                            optionValue="value" optionLabel="name">
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="fractions mt-2">
+
+                                                        <ul class="ks-cboxtags d-flex">
+                                                            <div class="col-md-6 text-center">
+                                                                <p class="text-center">Front Fractions</p>
+                                                                <li class="col-6">
+                                                                    <input type="checkbox" id="checkboxOne"><label
+                                                                        for="checkboxOne">top</label>
+                                                                </li>
+                                                                <li class="">
+                                                                    <input type="checkbox" id="checkboxTwo"><label
+                                                                        for="checkboxTwo">center</label>
+                                                                </li>
+                                                                <li class="">
+                                                                    <input type="checkbox" id="checkboxThree"><label
+                                                                        for="checkboxThree">bottom</label>
+                                                                </li>
+                                                            </div>
+                                                            <div class="col-md-6 text-center">
+                                                                <p class="text-center">Back Fractions</p>
+                                                                <li class="">
+                                                                    <input type="checkbox" id="checkboxFour"><label
+                                                                        for="checkboxFour">top</label>
+                                                                </li>
+                                                                <li class="col-6">
+                                                                    <input type="checkbox" id="checkboxFive"><label
+                                                                        for="checkboxFive">center</label>
+                                                                </li>
+                                                                <li class="col-6">
+                                                                    <input type="checkbox" id="checkboxSix"><label
+                                                                        for="checkboxSix">bottom</label>
+                                                                </li>
+
+                                                            </div>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div class="mt-2 text-end me-auto">
+                                                        <button type="submit" class=" submitBtn rounded-pill ms-auto"><i
+                                                                class="fas fa-search me-2"></i>Search</button>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row founded">
+                                        <div *ngIf="detailsArray">
+                                            <div>
+                                                <p-carousel [value]="detailsArray" styleClass="custom-carousel"
+                                                    [numVisible]="3" [numScroll]="1" [circular]="true"
+                                                    [autoplayInterval]="3000">
+                                                    <ng-template let-detail pTemplate="item">
+                                                        <div class="px-3 py-4">
+                                                            <div class="dashboard">
+                                                                <img [src]='detail.devicePicture'
+                                                                    class="w-50 d-block mx-auto mb-3">
+                                                                <h5 style="text-transform: uppercase;"
+                                                                    class="text-center">
+                                                                    {{detail.brand}}
+                                                                    {{detail.model}}</h5>
+                                                                <div class="row mt-4">
+                                                                    <div class="col-6">
+                                                                        <p *ngIf="detail.status"
+                                                                            [style]="detail.status? 'color:green' : 'color:orange'">
+                                                                            <i class="fas fa-circle me-2"></i>Submitted
+                                                                        </p>
+                                                                        <p *ngIf="!detail.status"
+                                                                            [style]="detail.status? 'color:green' : 'color:orange'">
+                                                                            <i class="fas fa-circle me-2"></i>Holding
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p><i
+                                                                                class="far fa-calendar text-primary me-1"></i>{{detail.created_at}}
+                                                                        </p>
+                                                                    </div>
+                                                                    <span>Report From:</span>
+                                                                    <p style="text-transform: capitalize;"><i
+                                                                            class="fas fa-map-marker-alt text-danger me-2"></i>{{detail.user.ContactInfo.government}}
+                                                                        | {{detail.user.ContactInfo.city}}</p>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <button (click)="reviewPopup(detail.reportID)" *ngIf="!detail.status"
+                                                                        class="rounded-pill mt-2">Submit
+                                                                        Review</button>
+                                
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                </p-carousel>
+                                            </div>
+
+                                        </div>
+                                        <div class="ReviewParentPopup justify-content-center align-items-center">
+                                            <div class="container popup pt-5 pb-4 px-5">
+                                                <button (click)="closeReview()" pButton pRipple type="button" icon="pi pi-times"
+                                                    class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                                                <h2 class="text-center mb-4"><img src="../../assets/img/seo.png"> Review</h2>
+                                                <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label class="ms-3">Theif Name</label>
+                                                                    <div class="wrap-input100 validate-input"
+                                                                        data-validate="Valid email is required: ex@abc.xyz">
+                                                                        <input formControlName="theifName" placeholder="Name" type="text"
+                                                                            class="input100 my-2">
+                                                                        <span class="focus-input100"></span>
+                                                                        <span class="symbol-input100">
+                                                                            <i class="fas fa-user-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                    
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="ms-3">Theif Mobile</label>
+                                                                    <div class="wrap-input100 validate-input"
+                                                                        data-validate="Valid email is required: ex@abc.xyz">
+                                                                        <input formControlName="theifMobile" placeholder="Mobile"
+                                                                            type="text" class="input100 my-2">
+                                                                        <span class="focus-input100"></span>
+                                                                        <span class="symbol-input100">
+                                                                            <i class="fas fa-phone-alt"></i>
+                                                                        </span>
+                                                                    </div>
+                    
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="ms-3">Theif NationalID</label>
+                                                                    <div class="wrap-input100 validate-input"
+                                                                        data-validate="Valid email is required: ex@abc.xyz">
+                                                                        <input formControlName="theifNatID" placeholder="ID" type="text"
+                                                                            class="input100 my-2">
+                                                                        <span class="focus-input100"></span>
+                                                                        <span class="symbol-input100">
+                                                                            <i class="fas fa-id-badge"></i>
+                                                                        </span>
+                                                                    </div>
+                    
+                                                                </div>
+                                                                <div class="col-md-12 mt-3">
+                                                                    <div class="form-group">
+                                                                        <label>Additional Info</label>
+                                                                        <textarea formControlName="additional_info" placeholder="Comment"
+                                                                            class="form-control my-2" rows="3"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex justify-content-start mt-4">
+                                                                    <div class="me-2">
+                                                                        <p-checkbox (onChange)="termBox2($event)" id="termsBox"
+                                                                            name="groupname" value="val1"></p-checkbox>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p style="font-size: 13px;">I confirm that the data entered
+                                                                            is correct and agree to use all appropriate methods to
+                                                                            communicate with me. I agree to the <a
+                                                                                routerLink="/termsandconditions"> <br> terms and
+                                                                                conditions.</a></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                    
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class=" d-flex justify-content-center align-items-center mt-3">
+                                                                <div class="input-file">
+                                                                    <div id="oFile_upload" class="input-file-upload">
+                                                                        <h4 class="text-center">Upload Thief Photo <small class="me-2"
+                                                                                style="font-size: 8px;">(Optional)</small></h4>
+                                                                        <img src="../../assets/img/image_placeholder.jpg">
+                                                                        <input style="position: absolute; top: 0; left: 0;" type='file'
+                                                                            (change)="thiefAvatar($event)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                    
+                    
+                    
+                                                    </div>
+                                                    <button type="submit"
+                                                        class="btn rounded-pill popupSubmitBtn mt-3 px-4 py-2 d-block ms-auto">Submit</button>
+                                                </form>
+                    
+                    
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-start">
+                                            <button (click)="goBackDetails()"
+                                                class="singleReportBtn rounded-pill btn d-block px-3 py-1"><i
+                                                    class="fas fa-arrow-left me-2"></i> Go Back</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="display: none;" class="loader justify-content-center align-items-center">
+                                <div class="b">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

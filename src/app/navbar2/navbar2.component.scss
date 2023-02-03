@@ -1,0 +1,53 @@
+a{
+    color: white !important;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+a img{
+    width: 35%;
+}
+.myHover a:hover{
+    background-color: white;
+}
+
+li a div {
+    width: 15px;
+    height: 15px;
+    background-color: #00b712;
+    background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+    border-radius: 50%;
+    position: absolute;
+    top: 38px;
+    right: 20.5%;
+    border: 2px solid #fff;
+  }
+
+a:hover{
+    color: black !important;
+}
+.brdr{
+    color: black !important;
+    background-color: white;
+    border: none !important;
+}
+.brdr:hover{
+    background: linear-gradient(to right, #6541c1 0%, #d43396 98%, #d43396 100%);
+    color: white !important;
+}
+.logo{
+    color: #6541c1 !important;
+    font-size: 30px;
+}
+@media (max-width: 991px)
+{
+    ul{
+        background-color: black !important;
+    }
+    a:hover{
+        color: rgb(190, 53, 159) !important;
+    }
+    .brdr:hover{
+        color: white !important;
+    }
+}

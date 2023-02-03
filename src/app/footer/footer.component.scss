@@ -1,0 +1,62 @@
+$g1: #6541c1;
+$g23: #d43396;
+
+footer {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  footer p{
+    color: white !important;
+  }
+  footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100vh;
+    height: 75vh;
+    background: radial-gradient($g1, $g23);
+    border-radius: 50%;
+    transform-origin: top;
+    transform: translatex(-50%) scale(4);
+  }
+footer .content {
+  position: relative;
+  text-align: center;
+}
+footer a {
+  text-decoration: none;
+  color: white;
+}
+footer a:hover {
+  color: black;
+}
+
+footer button i {
+  font-size: 25px;
+}
+footer h3 {
+  font-size: 50px;
+  color: white;
+}
+footer button {
+  background-color: white;
+  border: none;
+  color: black !important;
+  padding: 15px 29px;
+  box-shadow: 0 15px 30px rgb(212 50 151 / 27%);
+  text-decoration: none;
+  margin-right: 25px !important;
+  width: 220px !important;
+  transition: all 0.4s ease;
+}
+
+footer button:hover {
+  background-color: black;
+  color: white !important;
+}

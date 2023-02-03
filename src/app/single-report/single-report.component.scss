@@ -1,0 +1,204 @@
+$g1: #6541c1;
+$g23: #d43396;
+.layer {
+  margin: auto;
+  padding: 40px 50px 40px 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+  position: relative;
+}
+.previous i {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  background-color: #B41E7B;
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+}
+.report {
+  border: 1px solid rgb(175, 170, 170);
+  border-radius: 14px;
+}
+.bar-detalis,
+.bar-Serial {
+  padding: 30px;
+  border-radius: 14px;
+}
+h4 {
+  font-weight: 500;
+}
+.ground {
+  padding: 8px;
+  background-color: #f4f4f4;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.Title h5 {
+  padding: 6px;
+  border: 2px solid #6541c1;
+  border-radius: 14px;
+}
+.Title h5:hover {
+  background: linear-gradient(to right, #6541c1 0, #d43396 98%, #d43396 100%);
+  color: white;
+  transition: 0.6s;
+}
+
+.work-item:hover img {
+  transform: scale(1.1);
+}
+.work-item img {
+  transition: all 0.5s;
+}
+.linehamdy {
+  position: relative;
+  
+  // margin-top: 10px;
+}
+.linehamdy h4::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, #6541c1 0, #d43396 98%, #d43396 100%);
+}
+.pro-detalis span {
+  color: black;
+  font-size: 17px;
+}
+.pro-detalis p {
+  font-size: 15px;
+}
+.date p {
+  font-size: 13px;
+}
+.gray {
+  color: #868585 !important;
+  font-size: 15px !important;
+}
+.color div {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.next {
+  font-size: 25px !important;
+  color: #d43396;
+}
+.con-detalis i {
+  padding: 7px;
+  border-radius: 50%;
+  font-size: 20px !important;
+}
+.form-check-input:checked {
+  background-color: #d43396 !important;
+  border: none !important;
+}
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  /* border-style: solid; */
+  border-width: 0;
+}
+.details span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #666;
+}
+.details {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(to right, #6541c1 0%, #d43396 98%, #d43396 100%) border-box;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.pBtn {
+  background: linear-gradient(to right, #6541c1 0, #d43396 98%, #d43396 100%);
+  border: none;
+  color: white !important;
+  padding: 10px 29px;
+  box-shadow: 0 15px 30px rgb(212 50 151 / 27%);
+}
+
+// checkBox
+ul.ks-cboxtags {
+  list-style: none;
+  padding: 0;
+}
+ul.ks-cboxtags li {
+  display: inline;
+}
+ul.ks-cboxtags li label {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(139, 139, 139, 0.3) !important;
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s;
+}
+
+ul.ks-cboxtags li label {
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+ul.ks-cboxtags li label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "\f067";
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+  transform: rotate(-360deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+  background-color: #d43396 !important;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+// end of checkbox
+.storeInfo span {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+

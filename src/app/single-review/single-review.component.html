@@ -1,0 +1,294 @@
+<div style="min-height: 100vh;" class="gForm pb-4">
+    <app-navbar2></app-navbar2>
+    <div style="min-height: 50vh;" *ngIf="singleReview" class="container pt-3">
+        <div style="width: 73%; min-height: 503px;" class="my-box">
+            <mat-tab-group dynamicHeight mat-align-tabs="center">
+                <mat-tab label="Thief Info">
+                    <div class="mt-4">
+                        <h2 class="text-center"><img src="../../assets/img/thief.png" class="mb-2" width="35px"> Thief
+                            Information</h2>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mt-4 d-flex justify-content-start align-items-center">
+                            <div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/name.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Full Name</span>
+                                        <p style="text-transform: capitalize;">{{singleReview?.theifName}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/national-id.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>National ID</span>
+                                        <p>{{singleReview?.theifNatID}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/mobile1-2.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Mobile</span>
+                                        <p><a [href]="tel+singleReview?.theifMobile"><i class="fas fa-phone-volume me-2"></i>{{singleReview?.theifMobile}}</a></p>
+                                    </div>
+                                </div>
+                                <div *ngIf="remove" class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/additional.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Additional Info</span>
+                                        <p style="text-transform: capitalize;">{{singleReview?.additional_info}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-start align-items-center">
+                            <img [src]='singleReview?.theifPicture' class="w-75 rounded-3 hideImg">
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Contact Info">
+                    <div class="mt-4">
+                        <h2 class="text-center"><img src="../../assets/img/store.png" class="mb-2" width="35px"> Store
+                            Information</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-start align-items-center">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/name.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Full Name</span>
+                                                <p style="text-transform: capitalize;">{{singleReview?.Owner.firstName}}
+                                                    {{singleReview?.Owner.lastName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/email.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Email</span>
+                                                <p>{{singleReview?.Owner.email}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/mobile1-2.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Mobile1</span>
+                                                <p><a [href]="tel+singleReview?.Owner.Store.storeMobile_1">{{singleReview?.Owner.Store.storeMobile_1}}<i class="fas fa-phone-volume ms-2"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="singleReview?.Owner.Store.mobile" class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/mobile1-2.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Mobile2</span>
+                                                <p><a [href]="tel+singleReview?.Owner.Store.storeMobile_2">{{singleReview?.Owner.Store.storeMobile_2}}<i class="fas fa-phone-volume ms-2"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/store-name.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>StoreName</span>
+                                                <p style="text-transform: capitalize;">{{singleReview?.Owner.Store.storeName}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/location.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Location</span>
+                                                <p style="text-transform: capitalize;"><a target="_blank" [href]="location+singleReview?.Owner.Store.government+'+'+singleReview?.Owner.Store.city+'+'+singleReview?.Owner.Store.street+'+'+singleReview?.Owner.Store.storeName">{{singleReview?.Owner.Store.city}} | {{singleReview?.Owner.Store.street}}</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="singleReview?.Owner.Store.whatsapp" class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/whatsapp.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>WhatsApp</span>
+                                                <p style="text-transform: capitalize;"><a target="_blank" [href]="whatsapp+singleReview?.Owner.Store.whatsapp">{{singleReview?.Owner.Store.whatsapp}}</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="singleReview?.Owner.Store.facebookLink" class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/whatsapp.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Facebook</span>
+                                                <p style="text-transform: capitalize;"><a target="_blank" [href]="singleReview?.Owner.Store.facebookLink">Visit Profile</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex  justify-content-center align-items-center">
+                            <img src="../../assets/img/storeLost.jpg" class="w-100 hideImg">
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+        </div>
+
+    </div>
+
+    
+    <div style="min-height: 50vh;" *ngIf="singleOwnerReview" class="container pt-3">
+        <div style="width: 73%; min-height: 503px;" class="my-box">
+            <mat-tab-group dynamicHeight mat-align-tabs="center">
+                <mat-tab label="Thief Info">
+                    <div class="mt-4">
+                        <h2 class="text-center"><img src="../../assets/img/thief.png" class="mb-2" width="35px"> Thief
+                            Information</h2>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mt-4 d-flex justify-content-start align-items-center">
+                            <div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/name.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Full Name</span>
+                                        <p style="text-transform: capitalize;">{{singleOwnerReview?.theifName}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/national-id.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>National ID</span>
+                                        <p>{{singleOwnerReview?.theifNatID}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/mobile1-2.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Mobile</span>
+                                        <p><a [href]="tel+singleOwnerReview?.theifMobile">{{singleOwnerReview?.theifMobile}}<i class="fas fa-phone-volume ms-2"></i></a></p>
+                                    </div>
+                                </div>
+                                <div *ngIf="remove" class="row">
+                                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                        <img src="../../assets/img/additional.png" width="30%">
+                                    </div>
+                                    <div class="col-8"><span>Additional Info</span>
+                                        <p style="text-transform: capitalize;">{{singleOwnerReview?.additional_info}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-start align-items-center">
+                            <img [src]='singleOwnerReview.theifPicture' class="w-75 hideImg">
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Contact Info">
+                    <div class="mt-4">
+                        <h2 class="text-center"><img src="../../assets/img/store.png" class="mb-2" width="35px"> Store
+                            Information</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-start align-items-center">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/name.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Full Name</span>
+                                                <p style="text-transform: capitalize;">{{singleOwnerReview.Owner.firstName}}
+                                                    {{singleOwnerReview.Owner.lastName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/email.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Email</span>
+                                                <p>{{singleOwnerReview.Owner.email}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/mobile1-2.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Mobile1</span>
+                                                <p><a [href]="tel+singleOwnerReview?.Owner.Store.storeMobile_1">{{singleOwnerReview.Owner.Store.storeMobile_1}}<i class="fas fa-phone-volume ms-2"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="singleOwnerReview?.Owner.mobile" class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/mobile1-2.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Mobile2</span>
+                                                <p><a [href]="tel+singleOwnerReview?.Owner.mobile">{{singleOwnerReview?.Owner.mobile}}<i class="fas fa-phone-volume ms-2"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/store-name.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>StoreName</span>
+                                                <p style="text-transform: capitalize;">{{singleOwnerReview?.Owner.Store.storeName}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start">
+                                                <img src="../../assets/img/location.png" width="60%">
+                                            </div>
+                                            <div class="col-8"><span>Location</span>
+                                                <p style="text-transform: capitalize;"><a target="_blank" [href]="location+singleOwnerReview?.Owner.Store.government+'+'+singleOwnerReview?.Owner.Store.city+'+'+singleOwnerReview?.Owner.Store.street+'+'+singleOwnerReview?.Owner.Store.storeName">{{singleOwnerReview?.Owner.Store.city}} | {{singleOwnerReview?.Owner.Store.street}}</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex  justify-content-center align-items-center">
+                            <img src="../../assets/img/storeLost.jpg" class="w-100 hideImg">
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+        </div>
+
+    </div>
+
+</div>

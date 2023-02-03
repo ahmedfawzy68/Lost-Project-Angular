@@ -1,0 +1,143 @@
+<div class="gForm pb-5">
+    <p-toast></p-toast>
+    <app-navbar2></app-navbar2>
+    <div class="container">
+        <div class="my-box">
+            <mat-tab-group dynamicHeight mat-align-tabs="center">
+                <mat-tab label="User">
+                    <div class="row pt-5">
+                        <div class="col-md-6">
+                            <img src="../../assets/img/Computer login-amico.png" class="img-fluid main-img">
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <h2 class="login100-form-title">Login as User</h2>
+                            <form [formGroup]="userLogin" (ngSubmit)="submitUserLogin(userLogin)">
+                                <div class="wrap-input100 validate-input"
+                                    data-validate="Valid email is required: ex@abc.xyz">
+                                    <input formControlName="email" class="input100" type="email" name="email"
+                                        placeholder="Email">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input [type]="hide ? 'password' : 'text'" formControlName="password"
+                                        class="input100" placeholder="Password">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="symbolCondition">
+                                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                    </span>
+                                </div>
+
+
+                                <div class="text-center p-t-12">
+                                    <span class="txt1">
+                                        Forgot
+                                    </span>
+                                    <a class="txt2 text-decoration-none" routerLink="/userForgetpass">
+                                        Username / Password?
+                                    </a>
+                                </div>
+                                <div class="container-login100-form-btn">
+                                    <button [disabled]="userLogin.invalid" type="submit" class="login100-form-btn">
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <div class="">
+                                <p class="text-center text-black ">Or Login With</p>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <button (click)="userFacebookLogin()" type="button" class="facebookBtn me-2"><i
+                                            class="fab fa-facebook-f"></i></button>
+                                    <button (click)="userGoogleLogin()" type="button" class="googleBtn me-2"><i
+                                            class="fab fa-google"></i></button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="text-center p-t-136">
+                                <a class="txt2 text-decoration-none" routerLink="/register">
+                                    Create your Account
+                                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Owner">
+                    <div class="row pt-5">
+                        <div class="col-md-6">
+                            <img src="../../assets/img/login.jpg" class="img-fluid main-img">
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <h2 class="login100-form-title">Login as Owner</h2>
+                            <form [formGroup]="ownerLogin" (submit)="submitOwnerLogin(ownerLogin)">
+                                <div class="wrap-input100 validate-input"
+                                    data-validate="Valid email is required: ex@abc.xyz">
+                                    <input formControlName="email" class="input100" type="email" name="email"
+                                        placeholder="Email">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input [type]="hide ? 'password' : 'text'" formControlName="password" class="input100"
+                                        placeholder="Password">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="symbolCondition">
+                                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                    </span>
+
+                                </div>
+                                <div class="text-center p-t-12">
+                                    <span class="txt1">
+                                        Forgot
+                                    </span>
+                                    <a class="txt2 text-decoration-none" routerLink="/ownerForgetpass">
+                                        Username / Password?
+                                    </a>
+                                </div>
+                                <div class="container-login100-form-btn">
+                                    <button [disabled]="ownerLogin.invalid" type="submit" class="login100-form-btn">
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <div class="">
+                                <p class="text-center text-black ">Or Login With</p>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <button (click)="ownerFacebookLogin()" type="button" class="facebookBtn me-2"><i
+                                            class="fab fa-facebook-f"></i></button>
+                                    <button (click)="ownerGoogleLogin()" type="button" class="googleBtn me-2"><i
+                                            class="fab fa-google"></i></button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="text-center p-t-136">
+                                <a class="txt2 text-decoration-none" routerLink="/register">
+                                    Create your Account
+                                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

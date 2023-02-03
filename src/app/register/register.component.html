@@ -1,0 +1,745 @@
+<div class="gForm pb-5">
+    <p-toast></p-toast>
+    <app-navbar2></app-navbar2>
+    <div class="container">
+        <div class="my-box">
+
+            <mat-tab-group dynamicHeight mat-align-tabs="center">
+
+                <ng-template matStepperIcon="edit">
+                    <mat-icon>bubble_chart</mat-icon>
+                </ng-template>
+
+                <ng-template matStepperIcon="person">
+                    <mat-icon>person</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="call">
+                    <mat-icon>call</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="perm_device_information">
+                    <mat-icon>perm_device_information</mat-icon>
+                </ng-template>
+
+                <mat-tab label="User">
+                    <div class="row pt-5">
+                        <div class="text-center">
+                            <h2><img src="../../assets/img/register.png" style="width: 50px;"> Register Now
+                                as User</h2>
+                        </div>
+                        <form method="POST" enctype='multipart/form-data' [formGroup]="userRegister"
+                            (ngSubmit)="userSubmitRegister()">
+
+                            <mat-stepper class="mt-4">
+
+
+                                <mat-step state="person" label="Personal Information" completed="false">
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-6 my-3">
+                                                    <mat-label class="ms-3">First Name</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="firstName" class="input100" type="text"
+                                                            placeholder="First Name">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-user-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 my-3">
+                                                    <mat-label class="ms-3">Last Name</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="lastName" class="input100" type="text"
+                                                            placeholder="Last Name">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-user-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <mat-label class="ms-3">Email</mat-label>
+                                                <div class="wrap-input100 mt-2 validate-input">
+                                                    <input formControlName="email" class="input100" name="
+                                                    email" type="text" placeholder="Email">
+                                                    <span class="focus-input100"></span>
+                                                    <span class="symbol-input100">
+                                                        <i class="fas fa-envelope"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <mat-label class="ms-3">National ID</mat-label>
+                                                <div class="wrap-input100 mt-2 validate-input">
+                                                    <input formControlName="national_id" class="input100" type="text"
+                                                        placeholder="ID">
+                                                    <span class="focus-input100"></span>
+                                                    <span class="symbol-input100">
+                                                        <i class="fas fa-id-badge"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <mat-label class="ms-3">Password</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="password"
+                                                            [type]="hide ? 'password' : 'text'" class="input100"
+                                                            placeholder="Password">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-lock"></i>
+                                                        </span>
+                                                        <span class="symbolCondition">
+                                                            <mat-icon style="font-size: 20px;" matSuffix
+                                                                (click)="hide = !hide">{{hide ?
+                                                                'visibility_off' :
+                                                                'visibility'}}</mat-icon>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <mat-label class="ms-3">Confirm Password</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="confirmPassword"
+                                                            [type]="hide ? 'password' : 'text'" class="input100"
+                                                            placeholder="Password">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-lock"></i>
+                                                        </span>
+                                                        <span class="symbolCondition">
+                                                            <mat-icon style="font-size: 20px;" matSuffix
+                                                                (click)="hide = !hide">{{hide ?
+                                                                'visibility_off' :
+                                                                'visibility'}}</mat-icon>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 d-flex align-items-center">
+                                            <!-- <div class="input-file">
+                                                <div id="uFile_upload" class="input-file-upload">
+                                                    <h4 class="text-center">Upload Your Photo <small class="me-2"
+                                                            style="font-size: 8px;">(Optional)</small></h4>
+                                                    <img src="../../assets/img/image_placeholder.jpg"
+                                                        class="rounded-circle">
+                                                    <input style="position: absolute; top: 0; left: 0;" type='file'
+                                                        (change)="userAvatar($event)">
+                                                </div>
+                                            </div> -->
+                                            <div class="container realItems text-center mt-5">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="profile-img rounded-circle"
+                                                        style="width: 300px; height: 300px;">
+                                                        <h4 class="text-center">Upload Your Photo <small
+                                                                style="font-size: 8px;">(Optional)</small></h4>
+                                                        <div id="file_upload">
+                                                            <img src="../../assets/img/image_placeholder.jpg"
+                                                                width="300" height="300" class="profilePic">
+                                                        </div>
+                                                        <button type="button"
+                                                            style="background-color: #e6e6e6; width: 50px; height: 50px;"
+                                                            mat-mini-fab (click)="inputField.click()">
+                                                            <img src="../../assets/img/upload.png" class="profilei1">
+                                                        </button>
+                                                    </div>
+                                                    <input (change)="userAvatar($event)" #inputField type="file" hidden>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" routerLink="/home" mat-button
+                                            class="mt-3 me-4 cancel rounded-pill px-4">Cancel</button>
+                                        <button type="button" class="stepBtn rounded-pill px-4 mt-3" mat-button
+                                            matStepperNext>Next <i class="ms-2 fas fa-arrow-right"></i></button>
+                                    </div>
+                                    <p class="mt-3">already have an account?<a routerLink="/login"> Sign in Now</a></p>
+                                </mat-step>
+                                <mat-step state="call" label="Contact Information" completed="false">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-6 my-3">
+                                                    <mat-label class="ms-3">Mobile 1</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="mobile_1" class="input100" type="text"
+                                                            placeholder="mobile">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-phone-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 my-3">
+                                                    <mat-label class="ms-3">Mobile 2<small
+                                                            style="font-size: 8px;">(Optional)</small>
+                                                    </mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="mobile_2" class="input100" type="text"
+                                                            placeholder="mobile">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-phone-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="mb-3 col-md-6">
+                                                    <mat-label class="ms-3">Government</mat-label>
+                                                    <p-dropdown formControlName="government"
+                                                        (onChange)="selectCity($event)" [options]="Government"
+                                                        optionValue="id" optionLabel="name" [filter]="true"
+                                                        filterBy="name" [showClear]="true" placeholder="Select...">
+                                                    </p-dropdown>
+
+
+                                                </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <mat-label class="ms-3">City</mat-label>
+                                                    <p-dropdown formControlName="city" [options]="city"
+                                                        optionValue="name" optionLabel="name" [filter]="true"
+                                                        filterBy="name" [showClear]="true" placeholder="Select...">
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <mat-label class="ms-3">Street</mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="street" class="input100" type="text"
+                                                            placeholder="Street">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-road"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <p-button id="Trigger2" (click)="AddSocial()"
+                                                    [icon]="activeStateSocial[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                    (click)="toggleSocial(1)" styleClass="p-button-text p-ml-2"
+                                                    label="Add Social Media Links"></p-button>
+                                                <div class="social">
+                                                    <div class="row">
+                                                        <div class="col-md-12 my-3">
+                                                            <mat-label class="ms-3">Facebook Link<small
+                                                                    style="font-size: 8px;">(Optional)</small>
+                                                            </mat-label>
+                                                            <div class="wrap-input100 mt-2 validate-input">
+                                                                <input formControlName="facebookLink" class="input100"
+                                                                    type="text" placeholder="Facebook">
+                                                                <span class="focus-input100"></span>
+                                                                <span class="symbol-input100">
+                                                                    <i class="fab fa-facebook"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 mb-3">
+                                                            <mat-label class="ms-3">WhatsApp<small
+                                                                    style="font-size: 8px;">(Optional)</small>
+                                                            </mat-label>
+                                                            <div class="wrap-input100 mt-2 validate-input">
+                                                                <input formControlName="whatsapp" class="input100"
+                                                                    type="text" placeholder="Whatsapp">
+                                                                <span class="focus-input100"></span>
+                                                                <span class="symbol-input100">
+                                                                    <i class="fab fa-whatsapp"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                            <img src="../../assets/img/contact-info.png" class="w-75 ms-5">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="stepBtn rounded-pill px-4 mt-3" mat-button
+                                            matStepperPrevious><i class="fas fa-arrow-left me-2"></i>Back</button>
+                                        <button type="button" class="rounded-pill px-4 mt-3 stepBtn" mat-button
+                                            matStepperNext>Next <i class="ms-2 fas fa-arrow-right"></i></button>
+                                    </div>
+                                </mat-step>
+
+
+                                <mat-step state="perm_device_information" label="Device Information" completed="false">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-12 my-3">
+                                                    <mat-label class="ms-3">Serial Number<small
+                                                            style="font-size: 8px;">(Optional)</small></mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="serialNumber" class="input100"
+                                                            type="text" placeholder="Serial">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-qrcode"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="type" [showClear]="true"
+                                                        (onChange)="selectBrand($event)" [options]="Type"
+                                                        placeholder="Type" optionValue="id" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="brand" optionValue="id"
+                                                        (onChange)="selectModel($event)" [options]="Brand"
+                                                        placeholder="Brand" [showClear]="true" [group]="true">
+                                                        <ng-template let-items pTemplate="items">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div class="col-3">
+                                                                        <img [src]="items.img"
+                                                                            [class]="'flag flag-' + items.value"
+                                                                            style="width: 35px" />
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{items.label}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template let-group pTemplate="group">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div class="col-3">
+                                                                        <img [src]="group.img"
+                                                                            [class]="'flag flag-' + group.value"
+                                                                            style="width: 35px" />
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{group.label}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="model" (onChange)="getDevice($event)"
+                                                        optionValue="label" [showClear]="true" [options]="Model"
+                                                        placeholder="Model" [group]="true">
+                                                        <ng-template let-group pTemplate="group">
+                                                            <div
+                                                                class="p-d-flex p-ai-center d-flex justify-content-start">
+                                                                <img [src]="group.img"
+                                                                    [class]="'me-2 flag flag-' + group.value"
+                                                                    style="width: 20px" />
+                                                                <span class="text-center">{{group.label}}</span>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="color" [showClear]="true"
+                                                        [options]="Color" placeholder="Color" optionValue="name"
+                                                        optionLabel="name">
+                                                        <ng-template let-group pTemplate="icon">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div style="height: 24px; border-radius: 50%; border: 1px solid #666;"
+                                                                        [style.background]="group.icon" class="col-1">
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{group.name}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="RAM" [showClear]="true" [options]="RAM"
+                                                        placeholder="RAM" optionValue="value" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="ROM" [showClear]="true" [options]="ROM"
+                                                        placeholder="ROM" optionValue="value" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <p-button id="Trigger2" (click)="AddFraction()"
+                                                    [icon]="activeStateFraction[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                    (click)="toggleFraction(1)" styleClass="p-button-text p-ml-2"
+                                                    label="Add Fraction"><small class="me-2"
+                                                        style="font-size: 8px;">(Optional)</small></p-button>
+                                                <div class="fractions mt-2">
+                                                    <ul class="ks-cboxtags d-flex">
+                                                        <div class="col-md-6 text-center">
+                                                            <p class="text-center">Front</p>
+                                                            <li class="col-6">
+                                                                <input formControlName="frontCrach_top" type="checkbox"
+                                                                    id="checkboxOne" value="Front crach
+                                                                            top"><label for="checkboxOne">top</label>
+                                                            </li>
+                                                            <li>
+                                                                <input formControlName="frontCrach_center"
+                                                                    type="checkbox" id="checkboxTwo"
+                                                                    value="Front crach center"><label
+                                                                    for="checkboxTwo">center</label>
+                                                            </li>
+                                                            <li>
+                                                                <input formControlName="frontCrach_bottom"
+                                                                    type="checkbox" id="checkboxThree" value="Front crach
+                                                                        bottom"><label
+                                                                    for="checkboxThree">bottom</label>
+                                                            </li>
+                                                        </div>
+                                                        <div class="col-md-6 text-center">
+                                                            <p class="text-center">Back</p>
+                                                            <li>
+                                                                <input formControlName="backCrach_top" type="checkbox"
+                                                                    id="checkboxFour" value="Back crach
+                                                                            top"><label for="checkboxFour">top</label>
+                                                            </li>
+                                                            <li class="col-6">
+                                                                <input formControlName="backCrach_center"
+                                                                    type="checkbox" id="checkboxFive"
+                                                                    value="Back crash center"><label
+                                                                    for="checkboxFive">center</label>
+                                                            </li>
+                                                            <li class="col-6">
+                                                                <input formControlName="backCrach_bottom"
+                                                                    type="checkbox" id="checkboxSix"
+                                                                    value="Back crash bottom"><label
+                                                                    for="checkboxSix">bottom</label>
+                                                            </li>
+
+                                                        </div>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <p-button id="Trigger2" (click)="AddComment()"
+                                                    [icon]="activeStateComment[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                    (click)="toggleComment(1)" styleClass="p-button-text p-ml-2"
+                                                    label="Add Comment"><small class="me-2"
+                                                        style="font-size: 8px;">(Optional)</small></p-button>
+                                                <div class="comment form-group">
+                                                    <textarea formControlName="additional_info" placeholder="Comment"
+                                                        class="form-control my-2" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-start mt-4">
+                                                <div class="me-2">
+                                                    <p-checkbox (click)="termBox($event)" id="termsBox" name="groupname"
+                                                        value="val1"></p-checkbox>
+                                                </div>
+                                                <div>
+                                                    <p style="font-size: 13px;">I confirm that the data entered is
+                                                        correct, and agree to submit
+                                                        report
+                                                        with the device data, search for it, and hand over the device
+                                                        when
+                                                        it is found. I agree to add photos and device data in the list
+                                                        of
+                                                        device and use all search methods and announce them after
+                                                        registration and use all appropriate methods to communicate with
+                                                        me.
+                                                        I agree to the <a routerLink="/termsandconditions">terms and
+                                                            conditions</a>.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                            <div class="input-file">
+                                                <div id="dFile_upload" class="input-file-upload">
+                                                    <img id="defaultImg" src="../../assets/img/devices-placeholder.jpg"
+                                                        class="rounded-3">
+                                                    <img id="chosenImg" [src]="devicePath">
+                                                    <input style="position: absolute; top: 0; left: 0; display: none;"
+                                                        disabled type='file' (change)="devicePicture()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="stepBtn rounded-pill px-4 mt-3" mat-button
+                                            matStepperPrevious><i class="fas fa-arrow-left me-2"></i>Back</button>
+                                        <button type="submit" class="stepBtn rounded-pill px-4 mt-3">Submit</button>
+                                    </div>
+                                </mat-step>
+                            </mat-stepper>
+                        </form>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Owner">
+                    <div class="row pt-5">
+                        <div class="text-center">
+                            <h2><img src="../../assets/img/register.png" style="width: 50px;"> Register Now as Owner
+                            </h2>
+                        </div>
+                        <form [formGroup]="ownerRegister" (ngSubmit)="ownerSubmitRegister()">
+                            <div class="selected">
+                                <mat-stepper class="mt-4">
+
+
+                                    <mat-step label="Personal Information" completed="false">
+                                        <div class="row pt-3">
+                                            <div class="col-md-7">
+
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="ms-4 mb-2">First Name</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="firstName" class="input100"
+                                                                type="text" placeholder="First Name">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-user-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="ms-4 mb-2">Last Name</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="lastName" class="input100"
+                                                                type="text" placeholder="Last Name">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-user-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <label class="ms-4 mb-2">Email</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="email" class="input100" type="text"
+                                                                name="email" placeholder="Email">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-2">
+                                                        <label class="ms-4 mb-2">Mobile 1</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="mobile" class="input100" type="text"
+                                                                placeholder="Mobile">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-phone-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-2">
+                                                        <label class="ms-4 mb-2">Mobile 2</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="storeMobile_1" class="input100"
+                                                                type="text" placeholder="Mobile">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-phone-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-2">
+                                                        <label class="ms-4 mb-2">Password</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="password"
+                                                                [type]="hide ? 'password' : 'text'" class="input100"
+                                                                placeholder="Password">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-lock"></i>
+                                                            </span>
+                                                            <span class="symbolCondition">
+                                                                <mat-icon style="font-size: 20px;" matSuffix
+                                                                    (click)="hide = !hide">{{hide ?
+                                                                    'visibility_off' :
+                                                                    'visibility'}}</mat-icon>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-2">
+                                                        <label class="ms-4 mb-2">Confirm Password</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="confirmPassword" class="input100"
+                                                                [type]="hide ? 'password' : 'text'"
+                                                                placeholder="Password">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-lock"></i>
+                                                            </span>
+                                                            <span class="symbolCondition">
+                                                                <mat-icon style="font-size: 20px;" matSuffix
+                                                                    (click)="hide = !hide">{{hide ?
+                                                                    'visibility_off' :
+                                                                    'visibility'}}</mat-icon>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                               
+                                                <div class="container realItems text-center mt-5">
+                                                    <div class="input-file">
+                                                        <div id="oFile_upload" class="input-file-upload">
+                                                            <h4 class="text-center">Upload Your Photo <small
+                                                                    class="me-2"
+                                                                    style="font-size: 8px;">(Optional)</small></h4>
+                                                            <img src="../../assets/img/image_placeholder.jpg">
+                                                            <input style="position: absolute; top: 0; left: 0;"
+                                                                type='file' (change)="ownerAvatar($event)">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button" routerLink="/home" mat-button
+                                                class="mt-3 me-4 cancel rounded-pill px-4">Cancel</button>
+                                            <button type="button" class="stepBtn rounded-pill px-4 mt-3" mat-button
+                                                matStepperNext>Next <i class="ms-2 fas fa-arrow-right"></i></button>
+                                        </div>
+                                        <p class="mt-3">already have an account?<a routerLink="/login"> Sign in Now</a>
+                                        </p>
+                                    </mat-step>
+                                    <mat-step label="Contact Information" completed="false">
+                                        <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label class="ms-4 mb-2">Store Name</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="storeName" class="input100"
+                                                                type="text" placeholder="Store Name">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-store"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
+                                                        <mat-label class="ms-3">Government</mat-label>
+                                                        <p-dropdown formControlName="government"
+                                                            (onChange)="selectCity($event)" [filter]="true"
+                                                            filterBy="name" optionValue="id" [options]="Government"
+                                                            placeholder="Select a Government" optionLabel="name">
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="ms-4">City</label>
+                                                        <p-dropdown formControlName="city" [options]="city"
+                                                            optionValue="name" optionLabel="name" [filter]="true"
+                                                            filterBy="name" [showClear]="true" placeholder="Select...">
+                                                        </p-dropdown>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <label class="ms-4 mb-2">Street</label>
+                                                        <div class="wrap-input100 validate-input">
+                                                            <input formControlName="street" class="input100" type="text"
+                                                                placeholder="Street">
+                                                            <span class="focus-input100"></span>
+                                                            <span class="symbol-input100">
+                                                                <i class="fas fa-road"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <p-button id="Trigger2" (click)="AddSocial()"
+                                                            [icon]="activeStateSocial[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                            (click)="toggleSocial(1)" styleClass="p-button-text p-ml-2"
+                                                            label="Add Social Media Links">
+                                                        </p-button>
+                                                        <div class="social">
+                                                            <div class="row">
+                                                                <div class="col-md-12 my-3">
+                                                                    <mat-label class="ms-3">Facebook Link<small
+                                                                            style="font-size: 8px;">(Optional)</small>
+                                                                    </mat-label>
+                                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                                        <input formControlName="facebookLink"
+                                                                            class="input100" type="text"
+                                                                            placeholder="Facebook">
+                                                                        <span class="focus-input100"></span>
+                                                                        <span class="symbol-input100">
+                                                                            <i class="fab fa-facebook"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <mat-label class="ms-3">WhatsApp<small
+                                                                            style="font-size: 8px;">(Optional)</small>
+                                                                    </mat-label>
+                                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                                        <input formControlName="whatsapp"
+                                                                            class="input100" type="text"
+                                                                            placeholder="Whatsapp">
+                                                                        <span class="focus-input100"></span>
+                                                                        <span class="symbol-input100">
+                                                                            <i class="fab fa-whatsapp"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-start mt-4">
+                                                        <div class="me-2">
+                                                            <p-checkbox (click)="termBox2($event)" id="termsBox"
+                                                                name="groupname" value="val1"></p-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <p style="font-size: 13px;">I confirm that the data entered
+                                                                is correct and agree to use all appropriate methods to
+                                                                communicate with me. I agree to the <a
+                                                                    routerLink="/termsandconditions">terms and
+                                                                    conditions.</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                                <img src="../../assets/img/Wavy_Tech-28_Single-10.jpg" class="w-100">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button" class="stepBtn rounded-pill px-4 mt-3" mat-button
+                                                matStepperPrevious><i class="fas fa-arrow-left me-2"></i>Back</button>
+                                            <button type="submit" class="stepBtn rounded-pill px-4 mt-3">Submit</button>
+                                        </div>
+                                    </mat-step>
+
+                                </mat-stepper>
+                            </div>
+
+                        </form>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

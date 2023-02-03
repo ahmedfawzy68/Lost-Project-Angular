@@ -1,0 +1,374 @@
+<div style="min-height: 100vh;" class="gForm pb-5">
+  <app-navbar2></app-navbar2>
+  <div *ngIf="userReportObject" class="container">
+    <div class="realItems">
+      <div style="width: 80%;" class="layer row">
+        <div class="previous">
+          <i routerLink="/userDashboard" class="fas fa-arrow-left"></i>
+        </div>
+
+
+        <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <img [src]="userReportObject?.devicePicture" width="90%">
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="linehamdy d-flex justify-content-between">
+            <h6 class="ground my-auto ">Device Infomation</h6>
+          </div>
+          <div>
+            <div>
+              <div class="d-flex mt-3 justify-content-between align-items-center">
+                <h5 style="font-size: 23px; text-transform: uppercase;">{{userReportObject?.brand}}
+                  {{userReportObject?.model}}
+                  <small *ngIf="userReportObject?.serialNumber" style="font-size: 13px;">IMEI:
+                    ({{userReportObject?.serialNumber}})</small>
+                </h5>
+              </div>
+
+              <div class=" d-flex justify-content-between align-items-center ">
+                <p class="details rounded-pill px-3 py-1">RAM: {{userReportObject?.RAM}}GB</p>
+                <p class="details rounded-pill px-3 py-1">ROM: {{userReportObject?.ROM}}GB</p>
+                <div class="details rounded-pill px-3 py-1 color d-flex justify-content-start align-items-center mb-3">
+                  <span style="font-weight: 600; font-size: 16px;" class="me-2">Color: </span>
+                  <div style="border: 1px solid #666" [style.background]="userReportObject?.color"></div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span>Created at:</span>
+                  <p><i class="far fa-calendar text-primary me-1"></i>
+                    {{userReportObject?.created_at}}</p>
+                </div>
+                <div>
+                  <span>Status:</span>
+                  <p *ngIf="userReportObject?.status" [style]="userReportObject?.status? 'color:green' : 'color:orange'"><i
+                      class="fas fa-circle me-2" style="font-size: 14px;"></i>Founded</p>
+                  <p *ngIf="!userReportObject?.status" [style]="userReportObject?.status? 'color:green' : 'color:orange'"><i
+                      class="fas fa-circle me-2" style="font-size: 14px;"></i>Pending</p>
+                </div>
+                <div>
+                  <span>Report From:</span>
+                  <p style="text-transform: capitalize;"><i
+                      class="fas fa-map-marker-alt text-danger me-2"></i>{{userReportObject?.user.ContactInfo.government}}
+                    | {{userReportObject?.user.ContactInfo.city}} |
+                    {{userReportObject?.user.ContactInfo.street}}</p>
+                </div>
+                <div *ngIf="remove">
+                  <span>Additional Info:</span>
+                  <p><i class="fas fa-clipboard text-success me-2"></i>{{userReportObject?.additional_info}}</p>
+                </div>
+              </div>
+
+              <div>
+                <div class="fractions mt-2">
+                  <ul class="ks-cboxtags d-flex">
+                    <div class="col-md-6 text-center">
+                      <p class="text-center">Front</p>
+                      <li>
+                        <input [checked]="userReportObject?.frontCrach_top" type="checkbox" id="checkboxOne" disabled><label
+                          for="checkboxOne">top</label>
+                      </li>
+                      <li>
+                        <input [checked]="userReportObject?.frontCrach_center" type="checkbox" id="checkboxTwo"
+                          disabled><label for="checkboxTwo">center</label>
+                      </li>
+                      <li>
+                        <input [checked]="userReportObject?.frontCrach_bottom" type="checkbox" id="checkboxThree"
+                          disabled><label for="checkboxThree">bottom</label>
+                      </li>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <p class="text-center">Back</p>
+                      <li>
+                        <input [checked]="userReportObject?.backCrach_top" type="checkbox" id="checkboxFour" disabled><label
+                          for="checkboxFour">top</label>
+                      </li>
+                      <li>
+                        <input [checked]="userReportObject?.backCrach_center" type="checkbox" id="checkboxFive"
+                          disabled><label for="checkboxFive">center</label>
+                      </li>
+                      <li>
+                        <input [checked]="userReportObject?.backCrach_bottom" type="checkbox" id="checkboxSix"
+                          disabled><label for="checkboxSix">bottom</label>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class=" mt-3 linehamdy d-flex justify-content-between">
+                <h6 class="ground">Personal & Conatct Info</h6>
+              </div>
+              <div class="row storeInfo mt-4">
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/name.png" width="55%"></div>
+                    <div class="col-8"><span>Full Name</span>
+                      <p>{{userReportObject?.user.firstName}} {{userReportObject?.user.lastName}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/national-id.png" width="55%"></div>
+                    <div class="col-8"><span>National ID</span>
+                      <p>{{userReportObject?.user.national_id}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start "><img src="../../assets/img/email.png" width="55%"></div>
+                    <div class="col-8"><span>Email</span>
+                      <p>{{userReportObject?.user.email}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/mobile1-2.png" width="55%"></div>
+                    <div class="col-8"><span>Mobile 1</span>
+                      <p><a [href]="mobilecall+userReportObject?.user.ContactInfo.mobile_1"><i class="fas fa-phone-volume me-2"></i>{{userReportObject?.user.ContactInfo.mobile_1}}</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="userReportObject?.user.ContactInfo.mobile_2" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/mobile1-2.png" width="55%"></div>
+                    <div class="col-8"><span>Mobile 2</span>
+                      <p><a [href]="mobilecall+userReportObject?.user.ContactInfo.mobile_2"><i class="fas fa-phone-volume me-2"></i>{{userReportObject?.user.ContactInfo.mobile_2}}</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/location.png" width="55%"></div>
+                    <div class="col-8"><span>Location</span>
+                      <p style="text-transform: capitalize;"><a target="_blank" [href]="location+userReportObject?.user.ContactInfo.government+'+'+userReportObject?.user.ContactInfo.city+'+'+userReportObject?.user.ContactInfo.street">{{userReportObject?.user.ContactInfo.city}} | {{userReportObject?.user.ContactInfo.street}}</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="userReportObject?.user.ContactInfo.facebookLink || whatsapp+userReportObject?.user.ContactInfo.whatsapp" class="row">
+              <div class=" mt-3 linehamdy d-flex justify-content-between">
+                <h6 class="ground">Social Media</h6>
+              </div>
+              <div class="row storeInfo mt-4">
+                <div *ngIf="userReportObject?.user.ContactInfo.facebookLink" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/fb.png" width="55%"></div>
+                    <div class="col-8"><span>Facebook</span>
+                      <p><a [href]="userReportObject?.user.ContactInfo.facebookLink" target="_blank">Visit Profile</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="userReportObject?.user.ContactInfo.whatsapp" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/whatsapp.png" width="55%"></div>
+                    <div class="col-8"><span>WhatsApp</span>
+                      <p><a [href]="whatsapp+userReportObject?.user.ContactInfo.whatsapp" target="_blank">Chat Now</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="ownerReportObject" class="container">
+    <div class="realItems">
+      <div style="width: 80%;" class="layer row">
+        <div class="previous">
+          <i routerLink="/ownerDashboard" class="fas fa-arrow-left"></i>
+        </div>
+
+
+        <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <img [src]="ownerReportObject?.devicePicture" width="90%">
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="linehamdy d-flex justify-content-between">
+            <h6 class="ground my-auto ">Device Infomation</h6>
+          </div>
+          <div>
+            <div>
+              <div class="d-flex mt-3 justify-content-between align-items-center">
+                <h5 style="font-size: 23px; text-transform: uppercase;">{{ownerReportObject?.brand}}
+                  {{ownerReportObject?.model}}
+                  <small *ngIf="ownerReportObject?.serialNumber" style="font-size: 13px;">IMEI:
+                    ({{ownerReportObject?.serialNumber}})</small>
+                </h5>
+              </div>
+
+              <div class=" d-flex justify-content-between align-items-center ">
+                <p class="details rounded-pill px-3 py-1">RAM: {{ownerReportObject?.RAM}}GB</p>
+                <p class="details rounded-pill px-3 py-1">ROM: {{ownerReportObject?.ROM}}GB</p>
+                <div class="details rounded-pill px-3 py-1 color d-flex justify-content-start align-items-center mb-3">
+                  <span style="font-weight: 600; font-size: 16px;" class="me-2">Color: </span>
+                  <div style="border: 1px solid #666" [style.background]="ownerReportObject?.color"></div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span>Created at:</span>
+                  <p><i class="far fa-calendar text-primary me-1"></i>
+                    {{ownerReportObject?.created_at}}</p>
+                </div>
+                <div>
+                  <span>Status:</span>
+                  <p *ngIf="ownerReportObject?.status" [style]="ownerReportObject?.status? 'color:green' : 'color:orange'"><i
+                      class="fas fa-circle me-2" style="font-size: 14px;"></i>Founded</p>
+                  <p *ngIf="!ownerReportObject?.status" [style]="ownerReportObject?.status? 'color:green' : 'color:orange'"><i
+                      class="fas fa-circle me-2" style="font-size: 14px;"></i>Pending</p>
+                </div>
+                <div>
+                  <span>Report From:</span>
+                  <p style="text-transform: capitalize;"><i
+                      class="fas fa-map-marker-alt text-danger me-2"></i>{{ownerReportObject?.user.ContactInfo.government}}
+                    | {{ownerReportObject?.user.ContactInfo.city}} |
+                    {{ownerReportObject?.user.ContactInfo.street}}</p>
+                </div>
+                <div *ngIf="remove">
+                  <span>Additional Info:</span>
+                  <p><i class="fas fa-clipboard text-success me-2"></i>{{ownerReportObject?.additional_info}}</p>
+                </div>
+              </div>
+
+              <div>
+                <div class="fractions mt-2">
+                  <ul class="ks-cboxtags d-flex">
+                    <div class="col-md-6 text-center">
+                      <p class="text-center">Front</p>
+                      <li>
+                        <input [checked]="ownerReportObject?.frontCrach_top" type="checkbox" id="checkboxOne" disabled><label
+                          for="checkboxOne">top</label>
+                      </li>
+                      <li>
+                        <input [checked]="ownerReportObject?.frontCrach_center" type="checkbox" id="checkboxTwo"
+                          disabled><label for="checkboxTwo">center</label>
+                      </li>
+                      <li>
+                        <input [checked]="ownerReportObject?.frontCrach_bottom" type="checkbox" id="checkboxThree"
+                          disabled><label for="checkboxThree">bottom</label>
+                      </li>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <p class="text-center">Back</p>
+                      <li>
+                        <input [checked]="ownerReportObject?.backCrach_top" type="checkbox" id="checkboxFour" disabled><label
+                          for="checkboxFour">top</label>
+                      </li>
+                      <li>
+                        <input [checked]="ownerReportObject?.backCrach_center" type="checkbox" id="checkboxFive"
+                          disabled><label for="checkboxFive">center</label>
+                      </li>
+                      <li>
+                        <input [checked]="ownerReportObject?.backCrach_bottom" type="checkbox" id="checkboxSix"
+                          disabled><label for="checkboxSix">bottom</label>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class=" mt-3 linehamdy d-flex justify-content-between">
+                <h6 class="ground">Personal & Conatct Info</h6>
+              </div>
+              <div class="row storeInfo mt-4">
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/name.png" width="55%"></div>
+                    <div class="col-8"><span>Full Name</span>
+                      <p>{{ownerReportObject?.user.firstName}} {{ownerReportObject?.user.lastName}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/national-id.png" width="55%"></div>
+                    <div class="col-8"><span>National ID</span>
+                      <p>{{ownerReportObject?.user.national_id}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start "><img src="../../assets/img/email.png" width="55%"></div>
+                    <div class="col-8"><span>Email</span>
+                      <p>{{ownerReportObject?.user.email}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/mobile1-2.png" width="55%"></div>
+                    <div class="col-8"><span>Mobile 1</span>
+                      <p>{{ownerReportObject?.user.ContactInfo.mobile_1}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="ownerReportObject?.user.ContactInfo.mobile_2" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/mobile1-2.png" width="55%"></div>
+                    <div class="col-8"><span>Mobile 2</span>
+                      <p>{{ownerReportObject?.user.ContactInfo.mobile_2}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/location.png" width="55%"></div>
+                    <div class="col-8"><span>Location</span>
+                      <p style="text-transform: capitalize;"><a target="_blank" [href]="location+ownerReportObject?.user.ContactInfo.government+'+'+ownerReportObject?.user.ContactInfo.city+'+'+ownerReportObject?.user.ContactInfo.street">{{ownerReportObject?.user.ContactInfo.city}} | {{ownerReportObject?.user.ContactInfo.street}}</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="ownerReportObject?.user.ContactInfo.facebookLink || whatsapp+ownerReportObject?.user.ContactInfo.whatsapp" class="row">
+              <div class=" mt-3 linehamdy d-flex justify-content-between">
+                <h6 class="ground">Social Media</h6>
+              </div>
+              <div class="row storeInfo mt-4">
+                <div *ngIf="ownerReportObject?.user.ContactInfo.facebookLink" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/fb.png" width="55%"></div>
+                    <div class="col-8"><span>Facebook</span>
+                      <p><a [href]="ownerReportObject?.user.ContactInfo.facebookLink" target="_blank">Visit Profile</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="ownerReportObject?.user.ContactInfo.whatsapp" class="col-md-4">
+                  <div class="row">
+                    <div class="col-4 mt-1 px-0 d-flex justify-content-end align-items-start"><img src="../../assets/img/whatsapp.png" width="55%"></div>
+                    <div class="col-8"><span>WhatsApp</span>
+                      <p><a [href]="whatsapp+ownerReportObject?.user.ContactInfo.whatsapp" target="_blank">Chat Now</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

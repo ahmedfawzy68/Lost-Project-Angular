@@ -1,0 +1,296 @@
+<div class="loading-page position-fixed overflow-hidden">
+    <div class="bg-video">
+        <video muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+            <source src="../assets/Video/Lost Lap low.m4v" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="text-center dots-container">
+        <div class="loader1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+</div>
+<div class="mainBG">
+    <app-navbar></app-navbar>
+
+    <div class="container px-5">
+        <div class="row mb-5 pb-5">
+            <div class="col-lg-5 d-flex justify-content-center content mb-5">
+                <div>
+                    <h3 style="text-transform: capitalize;">Restore lost devices or verify the identity of the seller
+                    </h3>
+                    <p class="mb-5">No more time, effort and procedures; Report, Review, Restore</p>
+                    <div class="d-flex">
+                        <button (click)="popup()" class="main-btn1 rounded-pill">
+                            <div class="row">
+                                <div class="col-2">
+                                    <i class="fas fa-cloud-download-alt"></i>
+                                </div>
+                                <div class="col-10">
+                                    Download Our Application
+                                </div>
+                            </div>
+                        </button>
+                        <button routerLink="/login" class="main-btn2 rounded-pill">
+                            <div class="row">
+                                <div class="col-2">
+                                    <i class="fab fa-chrome"></i>
+                                </div>
+                                <div class="col-10">
+                                    Continue From Website
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="parentPopup justify-content-center align-items-center">
+                    <div class="container popup pt-5 pb-4 px-5">
+                        <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                        <div class="row">
+                            <h3 class="text-center mb-5">Download Now From</h3>
+                            <div class="col-md-4">
+                                <img src="../../assets/img/apk-pure-logo.png" class="w-100">
+                            </div>
+                            <div class="col-md-4 vl">
+                                <img src="../../assets/img/apk-mirror.png" class="w-100">
+                            </div>
+                            <div class="col-md-4 vl">
+                                <img src="../../assets/img/google-play-png-logo.png" class="w-100">
+                                <span>* Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-7 phone-img">
+                <img src="../../assets/img/main.png" class="w-100">
+            </div>
+        </div>
+
+
+
+        <div class="steps my-5 py-5">
+            <div class="row mb-4 mt-5 pt-5 justify-content-center">
+                <div class="col-md-5 d-flex justify-content-center">
+                    <img src="../../assets/img/x.jpg" class="w-100">
+                </div>
+                <div class="col-md-5 d-flex align-items-center py-5">
+                    <div>
+                        <h6 class="mb-3"><i class="fas fa-angle-right"></i> Step 01</h6>
+                        <h3 class="mb-4">Registeration</h3>
+                        <p>Register your personal info and choose your rule in our system to be authinticated , if you
+                            already have an account , skip registeration and SignIn directly .
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 mt-5 pt-5 justify-content-center">
+                <div class="col-md-5 d-flex justify-content-center align-items-center py-5 my-5 ">
+                    <div>
+                        <h6 class="mb-3"><i class="fas fa-angle-right"></i> Step 02</h6>
+                        <h3 class="mb-4">Reporting</h3>
+                        <p>Once you have been registered you can use our system for reporting about your lost devices or
+                            to
+                            identify the seller identity to maintain the reliability of the purchase of used devices</p>
+                    </div>
+                </div>
+                <div class="col-md-5 d-flex justify-content-center">
+                    <img src="../../assets/img/x.jpg" class="w-100">
+                </div>
+            </div>
+            <div class="row mb-4 mt-5 justify-content-center">
+                <div class="col-md-5 d-flex justify-content-center">
+                    <img src="../../assets/img/x.jpg" class="w-100">
+                </div>
+                <div class="col-md-5 d-flex justify-content-center align-items-center py-5">
+                    <div>
+                        <h6 class="mb-3"><i class="fas fa-angle-right"></i> Step 03
+                        </h6>
+                        <h3 class="mb-4">Reviewing</h3>
+                        <p>Once a Store Owner reviewd a lost device , the real owner of it received the review
+                            information
+                            and take the requird action .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="counter my-5 py-5">
+            <div class="d-flex mb-3 justify-content-center">
+                <h3>No stories, facts only</h3>
+            </div>
+            <div class="d-flex justify-content-center pb-5">
+                <p>Demo Title</p>
+            </div>
+            <div>
+                <div class="row my-5 py-5">
+                    <div class="col-md-3 ">
+                        <div class="d-flex justify-content-center">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h6>lorem</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="d-flex justify-content-center">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h6>lorem</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="d-flex justify-content-center">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h6>lorem</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="d-flex justify-content-center">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span>0</span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h6>lorem</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+
+        <div class="FAQ my-5 py-5">
+            <div class="d-flex mb-3 justify-content-center">
+                <h3>Frequently Asked Questions</h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p>It’s our pleasure to answer any questions you have</p>
+            </div>
+
+            <div class="row justify-content-center mt-5 pt-5">
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq1">What is the recovery rate for lost devices ?</h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq1">Not 100% guaranteed but we try to prevent theft and
+                                get our electronic devices back</p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open1()" *ngIf="Faq1" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open1()" *ngIf="!Faq1" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq2">Do I have to send a picture of my device ?</h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq2">If you need to send a picture of your device, the
+                                system will automatically select the picture based on your choice.</p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open2()" *ngIf="Faq2" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open2()" *ngIf="!Faq2" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq3">Is it possible to report more than one device ?
+                            </h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq3">Of course, as long as the IMEI is different for each
+                                device, you can report an unlimited number of devices</p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open3()" *ngIf="Faq3" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open3()" *ngIf="!Faq3" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq4">What is the IMEI and where i find it ?</h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq4">It unique number for each device can also be called
+                                Serial number , you can get it if you are the real owner of the device and it's located
+                                on the box each device</p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open4()" *ngIf="Faq4" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open4()" *ngIf="!Faq4" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq5">Is it possible to report without IMEI of the device
+                                or serial number ?</h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq5">If you lost the device box, you can report your
+                                device, but the success rate of the restore process decreases due to the similarity of
+                                the specifications of the devices.
+                            </p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open5()" *ngIf="Faq5" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open5()" *ngIf="!Faq5" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 mb-3 me-4 py-3 ps-5 rounded-3 FAQitems">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="FAQitemsIsClose" *ngIf="Faq6">What about using a non-Egyptian mobile number ?
+                            </h6>
+                            <p class="FAQitemsIsOpen" *ngIf="!Faq6">At the moment, no.
+                                We currently provide our service within the borders of Egypt and not outside it, but in
+                                the future this will be available</p>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-2">
+                            <i (click)="open6()" *ngIf="Faq6" class="fas fa-plus-circle FAQitemsIsClose"></i>
+                            <i (click)="open6()" *ngIf="!Faq6" class="fas fa-minus-circle FAQitemsIsOpen"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <app-footer></app-footer>
+</div>

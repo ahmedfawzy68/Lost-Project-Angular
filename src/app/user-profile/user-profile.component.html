@@ -1,0 +1,520 @@
+<div style="min-height: 100vh;"  class="gForm  pb-5">
+    <app-navbar2></app-navbar2>
+    <p-toast></p-toast>
+    <div class="layer overflow-hidden">
+
+        <div style="width: 75%;" class="container row m-auto">
+            <div class="content">
+
+                <input type="radio" name="slider" checked id="personal" class="d-none">
+                <input type="radio" name="slider" id="contact" class="d-none">
+                <input type="radio" name="slider" id="change-pass" class="d-none">
+                <input type="radio" name="slider" id="Report" class="d-none">
+
+                <div class="list">
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="profile-img rounded-circle" style="width: 200px; height: 200px;">
+                                <div id="file_upload">
+                                    <img [src]="info?.avatar" width="200" height="200" class="profilePic">
+                                </div>
+                                <button style="background-color: #e6e6e6; width: 45px; height: 45px;" mat-mini-fab
+                                    (click)="inputField.click()">
+                                    <img src="../../assets/img/upload.png" class="profilei1">
+                                </button>
+                            </div>
+                            <input (change)="userAvatar($event)" #inputField type="file" hidden>
+                        </div>
+                    </div>
+                    <label for="personal" class="personal">
+                        <i class="profilei1  fas fa-user-circle  me-2"></i>
+                        <span class="title">Personal Info</span>
+                    </label>
+                    <label for="contact" class="contact">
+                        <span class="icon"><i class="fas fa-phone-alt me-2 "></i></span>
+                        <span class="title">Contact</span>
+                    </label>
+                    <label for="change-pass" class="change-pass">
+                        <span class="icon"><i class="fas fa-lock me-2"></i></span>
+                        <span class="title">Change Pass</span>
+                    </label>
+                    <label for="Report" class="Report">
+                        <span class="icon"><i class="fas fa-flag me-2"></i></span>
+                        <span class="title">Report</span>
+                    </label>
+                </div>
+                <div class="text-content">
+                    <form [formGroup]="newPersonal" (ngSubmit)="submitNewInfo(newPersonal)">
+                        <div class="personal text">
+                            <div class="my-box1">
+                            
+                                <h2 class="text-center mt-3"><img src="../../assets/img/name.png" style="width: 42px;" class="mb-2 "> Personal Info</h2>
+                                <div class="hov">
+                                    
+                                    <div class="brd mb-3"></div>
+                                    <div style="padding:0  80px;" class="row pb-3">
+
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="firstName">First Name</label>
+                                            <div class="wrap-input100">
+                                                <input class="input100" [value]="info?.firstName"
+                                                    formControlName="firstName" type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-user-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="lastName">Last Name</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.lastName"
+                                                    formControlName="lastName" type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-user-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="email">Email</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.email" formControlName="email"
+                                                    type="text" name="email">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="ms-4 mb-2" for="mobile_num">National ID</label>
+                                            <div class="wrap-input100 ">
+                                                <input class="input100" [value]="info?.national_id" formControlName="national_id"
+                                                    type="text">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end">
+
+                                            <div>
+                                                <button type="submit"
+                                                    class="pBtn rounded-pill btn d-block mt-2 m-auto">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form [formGroup]="newContact" (ngSubmit)="submitNewContact(newContact)">
+                        <div class="contact text">
+                            <div class="my-box1 ">
+                                <h2 class="text-center mt-3"><img src="../../assets/img/mobile1-2.png" style="width: 42px;" class="mb-2 "> Contact Info</h2>
+                                <div class="hov">
+                                    <div class="brd mb-3"></div>
+                                </div>
+                                <div style="padding: 0 80px;" class="row pb-3">
+
+                                    <div class="col-md-6">
+                                        <label class="ms-4 mb-2">Mobile Number</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.ContactInfo.mobile_1"
+                                                formControlName="mobile_1" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fas fa-city"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ms-4 mb-2">Mobile Number 2</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.ContactInfo.mobile_1"
+                                                formControlName="mobile_1" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-facebook"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <mat-label class="ms-4 mb-2">Government</mat-label>
+                                        <p-dropdown formControlName="government" (onChange)="selectCity($event)"
+                                            [filter]="true" filterBy="name" optionValue="id" [dataKey]="info?.ContactInfo.government" [options]="Government" optionLabel="name">
+                                        </p-dropdown>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="ms-4">City</label>
+                                        <p-dropdown formControlName="city" [options]="city"
+                                            optionValue="name" optionLabel="name" [dataKey]="selectedCity" [filter]="true"
+                                            filterBy="name">
+                                        </p-dropdown>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">Street</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.ContactInfo.street"
+                                                formControlName="street" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fas fa-store"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">Facebook Link</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.ContactInfo.facebookLink"
+                                                formControlName="facebookLink" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-facebook"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="ms-4 mb-2">WhatsApp</label>
+                                        <div class="wrap-input100 ">
+                                            <input class="input100" [value]="info?.ContactInfo.whatsapp"
+                                                formControlName="whatsapp" type="text">
+                                            <span class="focus-input100"></span>
+                                            <span class="symbol-input100">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+
+                                        <div>
+                                            <button type="submit"
+                                                class="pBtn rounded-pill btn d-block mt-2 m-auto">Update</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <form [formGroup]="newPass" (ngSubmit)="submitNewPass(newPass)">
+                        <div class="change-pass text">
+                            <div class="my-box1">
+                                <h2 class="text-center mt-3"><img src="../../assets/img/password.png" style="width: 42px;" class="mb-2 "> Change Password</h2>
+                                <div class="">
+                                    <div class="hov">
+                                        <div class="brd mb-3"></div>
+                                    </div>
+                                    <div style="padding: 0 80px;" class="row pb-3">
+
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">Current Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Enter Your Current Password"
+                                                    formControlName="current_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">New Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Enter New Password"
+                                                    formControlName="new_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label class="ms-4 mb-2">Confrim New
+                                                Password</label>
+                                            <div class="wrap-input100 " data-validate="Password is required">
+                                                <input class="input100" placeholder="Re-type New Password"
+                                                    formControlName="new_confirm_password" type="password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+
+                                            <div>
+                                                <button type="submit"
+                                                    class="pBtn rounded-pill btn d-block mt-2 m-auto">Change</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="Report text pb-5">
+                        <div class="parentPopup justify-content-center align-items-center">
+                            <div class="container popup px-5">
+                                <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                                    class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                                <form [formGroup]="newReport" (ngSubmit)="submitNewReport()">
+                                    <div class="">
+                                        <h3 class="text-center"><img class="mb-3" width="50px"
+                                                src="../../assets/img/writing.png"> Report Information</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-12 my-3">
+                                                    <mat-label class="ms-3">Serial Number<small
+                                                            style="font-size: 8px;">(Optional)</small></mat-label>
+                                                    <div class="wrap-input100 mt-2 validate-input">
+                                                        <input formControlName="serialNumber" class="input100"
+                                                            type="text" [value]="thisReportObject?.serialNumber">
+                                                        <span class="focus-input100"></span>
+                                                        <span class="symbol-input100">
+                                                            <i class="fas fa-qrcode"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="type" [showClear]="true"
+                                                        (onChange)="selectBrand($event)" [dataKey]="thisReportObject?.type" [options]="Type"
+                                                        placeholder="Type" optionValue="id" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="brand" optionValue="id"
+                                                        (onChange)="selectModel($event)" [dataKey]="selectedBrand" [options]="Brand"
+                                                        placeholder="Brand" [showClear]="true" [group]="true">
+                                                        <ng-template let-items pTemplate="items">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div class="col-3">
+                                                                        <img [src]="items.img"
+                                                                            [class]="'flag flag-' + items.value"
+                                                                            style="width: 35px" />
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{items.label}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template let-group pTemplate="group">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div class="col-3">
+                                                                        <img [src]="group.img"
+                                                                            [class]="'flag flag-' + group.value"
+                                                                            style="width: 35px" />
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{group.label}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown (onChange)="getDevice($event)" [dataKey]="selectedModel" formControlName="model"
+                                                        optionValue="name" [showClear]="true" [options]="Model"
+                                                        placeholder="Model" [group]="true">
+                                                        <ng-template let-group pTemplate="group">
+                                                            <div
+                                                                class="p-d-flex p-ai-center d-flex justify-content-start">
+                                                                <img [src]="group.img"
+                                                                    [class]="'me-2 flag flag-' + group.value"
+                                                                    style="width: 20px" />
+                                                                <span class="text-center">{{group.label}}</span>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="color" [showClear]="true"
+                                                        [options]="Color" placeholder="Color" optionValue="name"
+                                                        optionLabel="name">
+                                                        <ng-template let-group pTemplate="icon">
+                                                            <div class="p-d-flex p-ai-center">
+                                                                <div
+                                                                    class="row justify-content-start align-items-center">
+                                                                    <div style="height: 24px; border-radius: 50%; border: 1px solid #666;"
+                                                                        [style.background]="group.icon" class="col-1">
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span>{{group.name}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="RAM" [showClear]="true" [options]="RAM"
+                                                        placeholder="RAM" optionValue="value" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                                <div class="col-md-4 my-3">
+                                                    <p-dropdown formControlName="ROM" [showClear]="true" [options]="ROM"
+                                                        placeholder="ROM" optionValue="value" optionLabel="name">
+                                                    </p-dropdown>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <p-button id="Trigger2" (click)="AddFraction()"
+                                                    [icon]="activeStateFraction[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                    (click)="toggleFraction(1)" styleClass="p-button-text p-ml-2"
+                                                    label="Add Fraction"><small class="me-2"
+                                                        style="font-size: 8px;">(Optional)</small></p-button>
+                                                <div class="fractions mt-2">
+
+                                                    <ul class="ks-cboxtags d-flex">
+                                                        <div class="col-md-6 text-center">
+                                                            <p class="text-center">Front</p>
+                                                            <li class="col-6">
+                                                                <input type="checkbox" id="checkboxOne" value="Front crach
+                                                                            top"><label for="checkboxOne">top</label>
+                                                            </li>
+                                                            <li class="">
+                                                                <input type="checkbox" id="checkboxTwo"
+                                                                    value="Front crach center"><label
+                                                                    for="checkboxTwo">center</label>
+                                                            </li>
+                                                            <li class="">
+                                                                <input type="checkbox" id="checkboxThree" value="Front crach
+                                                                        bottom"><label
+                                                                    for="checkboxThree">bottom</label>
+                                                            </li>
+                                                        </div>
+                                                        <div class="col-md-6 text-center">
+                                                            <p class="text-center">Back</p>
+                                                            <li class="">
+                                                                <input type="checkbox" id="checkboxFour" value="Back crach
+                                                                            top"><label for="checkboxFour">top</label>
+                                                            </li>
+                                                            <li class="col-6">
+                                                                <input type="checkbox" id="checkboxFive"
+                                                                    value="Back crash center"><label
+                                                                    for="checkboxFive">center</label>
+                                                            </li>
+                                                            <li class="col-6">
+                                                                <input type="checkbox" id="checkboxSix"
+                                                                    value="Back crash bottom"><label
+                                                                    for="checkboxSix">bottom</label>
+                                                            </li>
+
+                                                        </div>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <p-button id="Trigger2" (click)="AddComment()"
+                                                    [icon]="activeStateComment[1] ? 'pi pi-minus' : 'pi pi-plus'"
+                                                    (click)="toggleComment(1)" styleClass="p-button-text p-ml-2"
+                                                    label="Add Comment"><small class="me-2"
+                                                        style="font-size: 8px;">(Optional)</small></p-button>
+                                                <div class="comment form-group">
+                                                    <textarea formControlName="additional_info" placeholder="Comment"
+                                                        class="form-control my-2" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                            <div class="input-file">
+                                                <div id="dFile_upload" class="input-file-upload">
+                                                    <img id="defaultImg" src="../../assets/img/devices-placeholder.jpg"
+                                                        class="rounded-3">
+                                                    <img id="chosenImg" [src]="devicePath">
+                                                    <input style="position: absolute; top: 0; left: 0; display: none;"
+                                                        disabled type='file' (change)="devicePicture()">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <button type="submit"
+                                        class="pBtn d-block ms-auto mt-3 rounded-pill btn ">update</button>
+                                </form>
+
+
+                            </div>
+                        </div>
+                        <table class="mt-5">
+                            <thead>
+                                <tr>
+                                    <th class="roun">#ID</th>
+                                    <th>DEVICE</th>
+                                    <th>Type</th>
+                                    <th>BRAND</th>
+                                    <th>MODEL</th>
+                                    <th>COLOR</th>
+                                    <th>STATUS</th>
+                                    <th class="roun1">ACTION</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reports of getMyReportsArray" class="ms-5">
+                                    <td>{{reports.reportID}}</td>
+                                    <td><img style="width: 50px;" [src]="reports.devicePicture" alt="img"></td>
+                                    <td style="text-transform: capitalize;">{{reports.type}}</td>
+                                    <td style="text-transform: uppercase;">{{reports.brand}}</td>
+                                    <td style="text-transform: uppercase;">{{reports.model}}</td>
+                                    <td>
+                                        <div [style.background]="reports.color" style="border: 1px solid #666;" class="clo m-auto"></div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p style="font-size: 13px;" *ngIf="!reports.status" class="py-2  text-center rounded-pill mt-3"
+                                                [style]="reports.status? 'background-color:#D1E7DD ; color:green' : 'background-color:#FFF3CD; color: orange'">
+                                                Pending</p>
+                                            <p style="font-size: 13px;" *ngIf="reports.status" class="py-2  text-center rounded-pill mt-3"
+                                                [style]="reports.status? 'background-color:#D1E7DD ; color:green' : 'background-color:#FFF3CD; color: orange'">
+                                                Founded</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="ptn-edit me-2" [disabled]="reports.status"
+                                            (click)="popup(reports)"><i class="fas fa-edit me-1"></i></button>
+                                        <button (click)="deleteReport(reports.reportID)" type="button"
+                                            class="ptn-delete "> <i class="fas fa-trash-alt me-1"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <td colspan="8" class="tablefoot"></td>
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

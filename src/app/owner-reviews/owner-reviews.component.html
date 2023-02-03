@@ -1,0 +1,119 @@
+<app-navbar3></app-navbar3>
+<p-toast></p-toast>
+<div class="container">
+    <div class="row justify-content-center pb-5 mt-4 ps-5">
+        <h1 class="text-center mt-5 mb-5"><img src="../../assets/img/rating.png" style="width: 80px;" class="mb-5 me-2">Reviews</h1>
+        <div class="row skeltonItems">
+            <div class="col-md-3 px-3 py-4 col-6">
+                <div class="row">
+                    <div class="card">
+                        <div class="cover skeleton">
+                            <img id="cover" src="" />
+                        </div>
+
+                        <div class="content">
+                            <h2 id="title" class="skeleton"></h2>
+                            <small id="subtitle" class="skeleton"></small>
+                            <p id="about" class="skeleton"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-3 py-4 col-6">
+                <div class="row">
+                    <div class="card">
+                        <div class="cover skeleton">
+                            <img id="cover" src="" />
+                        </div>
+
+                        <div class="content">
+                            <h2 id="title" class="skeleton"></h2>
+                            <small id="subtitle" class="skeleton"></small>
+                            <p id="about" class="skeleton"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-3 py-4 col-6">
+                <div class="row">
+                    <div class="card">
+                        <div class="cover skeleton">
+                            <img id="cover" src="" />
+                        </div>
+
+                        <div class="content">
+                            <h2 id="title" class="skeleton"></h2>
+                            <small id="subtitle" class="skeleton"></small>
+                            <p id="about" class="skeleton"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 px-3 py-4 col-6">
+                <div class="row">
+                    <div class="card">
+                        <div class="cover skeleton">
+                            <img id="cover" src="" />
+                        </div>
+
+                        <div class="content">
+                            <h2 id="title" class="skeleton"></h2>
+                            <small id="subtitle" class="skeleton"></small>
+                            <p id="about" class="skeleton"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="display: none;" class="row realItems">
+            <div *ngIf="!allReviews" class="noReviews text-center">
+                <hr class="mb-5">
+                <h4>No Reviews Yet</h4>
+                <p>Reviews Submitted by Store Owners will appear here</p>
+            </div>
+            <div *ngFor="let review of allReviews" class="col-md-3 itembox2 px-3 py-5 col-6">
+                <a [routerLink]="['/singleReview', review.reviewID]" class="true rounded-pill">
+                    <span>Founded</span> <i class="ms-2 fas fa-check"></i>
+                </a>
+                <div class="dashboard text-center">
+                    <img [src]='review.Report.devicePicture' class="w-50 d-block mx-auto mb-3">
+                    <h5 style="text-transform: uppercase;" class="text-center mb-3">{{review.Report.brand}}
+                        {{review.Report.model}}</h5>
+                    <p>Store Owner has reviewed your device and you can find it at</p>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div>
+                            <p style="text-transform: uppercase;"><i
+                                    class="fas fa-store status me-2 text-success"></i>{{review.Owner.Store.storeName}}
+                            </p>
+                        </div>
+                        <div>
+                            <p style="text-transform: capitalize;"><i
+                                    class="fas fa-map-marker-alt text-danger me-2"></i>{{review.Report.user.ContactInfo.government}}
+                                | {{review.Report.user.ContactInfo.city}}</p>
+                        </div>
+
+
+                    </div>
+                    <div class="text-center">
+                        <button [routerLink]="['/singleReview', review.reviewID]"
+                            class="showMore rounded-pill mt-2">Show more <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="actionIcons d-flex justify-content-center">
+                        <!-- <i class="fas fa-edit me-2 edit"></i> -->
+                        <i (click)="delete(review.reviewID)" class="fas fa-trash-alt delete"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+
+
+
+
+    </div>
+    
+</div>

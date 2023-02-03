@@ -1,0 +1,27 @@
+<body class="gForm">
+    <img src="../../assets/img/lost-white.png" class="logo p-4">
+    <form [formGroup]='pincode' (ngSubmit)='verify(pincode)'>
+
+        <p-toast></p-toast>
+
+        <div class="row py-5">
+            <div class="col-lg-5">
+                <img src="../../assets/img/verification.png" width="90%">
+            </div>
+            <div class="col-lg-7 mt-5 col-12">
+                <h4 class="text-center mb-4"><img class="mb-2" src="../../assets/img/verify.png"> Enter verification
+                    code</h4>
+                <div class="d-flex mb-4">
+                    <input formControlName="number1" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                    <input formControlName="number2" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                    <input formControlName="number3" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                    <input formControlName="number4" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                    <input formControlName="number5" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                    <input formControlName="number6" type="tel" maxlength="1" pattern="[0-9]" class="form-control complete">
+                </div>
+                <button [disabled]="pincode.invalid" type="submit" class="w-100 rounded-pill mt-2">Verify Pin
+                    Code</button>
+            </div>
+        </div>
+    </form>
+</body>

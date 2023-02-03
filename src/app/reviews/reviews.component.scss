@@ -1,0 +1,270 @@
+$g1: #6541c1;
+$g23: #d43396;
+
+.itembox2 .showMore {
+  background: linear-gradient(to right, $g1 0%, $g23 98%, $g23 100%);
+  padding: 4px 30px;
+  border: none;
+  box-shadow: 0 15px 30px rgb(212 50 151 / 27%);
+  text-decoration: none;
+  display: none;
+  color: white !important;
+}
+
+.dashboard p i {
+  font-size: 16px;
+}
+h1 {
+  font-size: 47px;
+}
+
+.fractionsbtn button {
+  background-color: white;
+  border: 0;
+  color: #666;
+  padding: 10px 25px !important;
+  border: 1px solid rgb(226, 225, 225);
+}
+.brdr {
+  border-radius: 20px 100px;
+  background-color: #f4f7fa;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: -15px 0px 17px 7px rgba(0, 0, 0, 0.1);
+}
+.status {
+  color: orange;
+}
+.date {
+  color: blue;
+}
+
+select,
+input,
+option,
+optgroup {
+  background-color: white !important;
+  padding: 10px;
+}
+.sep {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 15px 0px 17px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 50px 50px 0px;
+}
+li:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.exception input {
+  padding: 0;
+}
+
+.itembox2 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  position: relative;
+}
+
+.itembox2:hover {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+.itembox2:hover .true button{
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+.itembox2:hover .showMore{
+  display: inline;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.parentPopup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 6546;
+  display: none;
+}
+.popup {
+  background-color: #fff;
+  width: 700px;
+  position: relative;
+  border-radius: 20px;
+}
+.popup img {
+  width: 50px;
+}
+.closeBtn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+.details p {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(to right, #6541c1 0%, #d43396 98%, #d43396 100%) border-box;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+// skelton
+
+
+.card {
+  width: 280px;
+  padding: 14px;
+  background-color: #fafafa;
+  font-family: '@microsoft yahei light', sans-serif;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 60px -8px hsl(210, 14%, 80%);
+  border: 1px solid rgb(213, 218, 223);
+}
+
+.cover {
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cover img {
+  display: block;
+  width: 100%;
+  opacity: .95;
+}
+
+/* add to img on load event */
+.animate {
+  animation: animate 1s ease;
+}
+@keyframes animate {
+  from {
+    transform: rotateX(20deg);
+    opacity: 0;
+
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.content {
+  position: relative;
+  color: #333;
+  margin-top: 8px;
+}
+.content small {
+  display: block;
+  margin: 8px 0;
+  color: grey;
+}
+
+/* sleleton elements */
+
+$base-color: #ddd;
+$shine-color: #e8e8e8;
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $base-color 0px,
+    $shine-color 40px,
+    $base-color 80px
+  );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+}
+h2.skeleton {
+  width: 50%;
+  height: 1em;
+}
+small.skeleton {
+  height: 1rem;
+  width: 4rem;
+}
+p.skeleton {
+  height: 3em;
+}
+
+/* skeleton animation */
+@keyframes loader {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+
+// end skelton
+
+
+.true {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  text-decoration: none;
+}
+a i {
+  border: 1px solid green;
+  padding: 4px 4px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+a {
+  color: green;
+  padding: 5px 15px;
+  transition: 0.5s;
+}
+a span {
+  opacity: 0;
+  transition: 0.2s;
+}
+a:hover {
+  color: white;
+  background-color: green;
+}
+a:hover span {
+  opacity: 1;
+}
+.actionIcons {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+.actionIcons i {
+  color: #666;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.actionIcons .edit:hover {
+  color: #0D6EFD;
+  opacity: 1;
+}
+.actionIcons .delete:hover {
+  color: red;
+  opacity: 1;
+}

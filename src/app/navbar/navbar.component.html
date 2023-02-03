@@ -1,0 +1,74 @@
+<nav class="py-3 navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a routerLink="/home" class="navbar-brand ms-lg-5 ps-lg-5 logo"><img src="../../assets/img/wide-logoX2.png"
+                alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  p-4 ms-auto mb-2 mb-lg-0">
+
+                <li class="nav-item myHover ">
+                    <a class="nav-link rounded-pill px-3" routerLink="/home">Home</a>
+                </li>
+
+                <li class="nav-item myHover">
+                    <a class="nav-link rounded-pill px-3" routerLink="/aboutus">About Us</a>
+                </li>
+                <li *ngIf="!userIsLogin && !ownerIsLogin" class="nav-item myHover">
+                    <a class="nav-link rounded-pill px-3" routerLink="/termsandconditions">Terms And Conditions</a>
+                </li>
+
+                <li *ngIf="!userIsLogin && !ownerIsLogin" class="nav-item myHover">
+                    <a class="nav-link rounded-pill px-3" routerLink="/privacypolicy">Privacy Policy</a>
+                </li>
+
+                <li *ngIf="userIsLogin" class="nav-item myHover">
+                    <a class="nav-link rounded-pill px-3" routerLink="/submit-report">Submit Reports</a>
+                </li>
+
+                <li *ngIf="ownerIsLogin" class="nav-item myHover">
+                    <a class="nav-link mb-3 px-3 rounded-pill" routerLink="/search">Search <i class="fas fa-search"></i></a>
+                </li>
+
+                <li  *ngIf="userIsLogin" class="nav-item myHover">
+                    <a class="nav-link mb-3 px-3 rounded-pill" routerLink="/userReviews">Reviews <i class="fas fa-bell"></i></a>
+                </li>
+                <li  *ngIf="ownerIsLogin" class="nav-item myHover">
+                    <a class="nav-link mb-3 px-3 rounded-pill" routerLink="/ownerReviews">Reviews <i class="fas fa-bell"></i></a>
+                </li>
+
+                <li  *ngIf="ownerIsLogin" class="nav-item">
+                    <a class="nav-link p-0 me-2 ms-lg-5" routerLink="/ownerProfile"><img [src]="ownerInfo?.avatar" style="width: 39px;" class="rounded-pill"><img src="../../assets/Video/avatar-nav-loading.gif" style="width: 39px;" class="rounded-pill loader"> <div></div></a>
+                </li>
+
+                <li  *ngIf="userIsLogin" class="nav-item">
+                    <a class="nav-link p-0 me-2 ms-lg-5" routerLink="/userProfile"><img [src]="userInfo?.avatar" style="width: 39px;" class="rounded-pill"><img src="../../assets/Video/avatar-nav-loading.gif" style="width: 39px;" class="rounded-pill loader"> <div></div></a>
+                </li>
+
+                <li *ngIf="!userIsLogin && !ownerIsLogin" class="nav-item">
+                    <a class="nav-link px-3 ms-5 mb-3 brdr me-2 px-4 rounded-pill" routerLink="/login">Login <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+
+                <li *ngIf="!userIsLogin && !ownerIsLogin" class="nav-item">
+                    <a class="nav-link px-3 mb-3 brdr me-2 px-4 rounded-pill" routerLink="/register">Register <i class="fas fa-registered"></i></a>
+                </li>
+                <li *ngIf="userIsLogin" class="nav-item">
+                    <a class="nav-link px-3 mb-3 brdr me-2 px-4 rounded-pill" routerLink="/userDashboard">Dashboard <i class="fas fa-chart-line"></i></a>
+                </li>
+                <li *ngIf="ownerIsLogin" class="nav-item">
+                    <a class="nav-link px-3 mb-3 brdr me-2 px-4 rounded-pill" routerLink="/ownerDashboard">Dashboard <i class="fas fa-chart-line"></i></a>
+                </li>
+                <li (click)="ownerLogout()" *ngIf="ownerIsLogin" class="nav-item">
+                    <a class="nav-link px-3 mb-3 brdr me-2 px-4 rounded-pill" >Logout <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                <li (click)="userLogout()" *ngIf="userIsLogin" class="nav-item">
+                    <a class="nav-link px-3 mb-3 brdr me-2 px-4 rounded-pill" >Logout <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

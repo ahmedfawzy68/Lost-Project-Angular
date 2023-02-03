@@ -1,0 +1,546 @@
+<app-navbar3></app-navbar3>
+<div class="spdashboard">
+    <p-toast baseZIndex.number="999999999999999999999999999999999999"
+        [style]="{textTransform: 'capitalize', fontWeight:'600'}"></p-toast>
+    <div class="container-fluid pt-5">
+        <div class="row mb-5">
+            <div class="col-md-3 sep pe-5 mb-5 profile">
+
+                <div class="container skeltonItems text-center mt-5">
+                    <div class="profileSkeleton">
+                        <div class="skeleton-center"></div>
+                        <div class="square circle"></div>
+                    </div>
+                </div>
+
+                <div style="display: none;" class="container realItems text-center mt-5">
+                    <div class="d-flex justify-content-center">
+                        <div class="profile-img rounded-circle" style="width: 260px; height: 260px;">
+                            <div id="file_upload">
+                                <img [src]="info?.avatar" width="260" height="260" class="profilePic">
+                            </div>
+                            <button style="background-color: #e6e6e6; width: 50px; height: 50px;" mat-mini-fab
+                                (click)="inputField.click()">
+                                <img src="../../assets/img/upload.png" class="profilei1">
+                            </button>
+                        </div>
+                        <input (change)="ownerAvatar($event)" #inputField type="file" hidden>
+                    </div>
+                </div>
+
+                <p style="display: none; text-transform: capitalize;" class="text-center realItems text-dark my-4">
+                    {{info?.firstName +' '+
+                    info?.lastName}}</p>
+
+                <div class="skeltonItems">
+                    <div class="infoSkl">
+                        <div class="avatar"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <br>
+                    <div class="infoSkl">
+                        <div class="avatar"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <br>
+                    <div class="infoSkl">
+                        <div class="avatar"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <br>
+                    <div class="infoSkl">
+                        <div class="avatar"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+
+
+                <div style="display: none;" class="ms-3 realItems">
+                    <div class="accordion " id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img src="../../assets/img/User-Icon.png" class="profileimg me-2">Personal Details
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div style="text-transform: capitalize;" class="accordion-body">
+                                    <strong>First Name:</strong><span class="ms-2">{{info?.firstName}}</span>
+                                    <br>
+                                    <strong>Last Name:</strong><span class="ms-2">{{info?.lastName}}</span>
+                                    <br>
+                                    <strong>Mobile Number:</strong><span class="ms-2">{{info?.mobile}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <img src="../../assets/img/Store-Icon.png" class="profileimg me-2">Store Details
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Store Name:</strong><span style="text-transform: capitalize;"
+                                        class="ms-2">{{info?.Store.storeName}}</span>
+                                    <br>
+                                    <strong>Store Address:</strong><span style="text-transform: capitalize;"
+                                        class="ms-2">{{info?.Store.street}}</span>
+                                    <br>
+                                    <strong>Store Number:</strong><span
+                                        class="ms-2">{{info?.Store.storeMobile_1}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <img src="../../assets/img/Contact-Icon.png" class="profileimg me-2">Contact Details
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse show"
+                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Email:</strong><span class="ms-2">{{info?.email}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div style="display: none;" class="editProfile realItems my-5 pt-3">
+                    <button routerLink="/ownerProfile" class="rounded-pill mt-5">Edit Profile</button>
+                </div>
+            </div>
+            <div class="col-md-9  py-5 pe-4">
+                <div class="row pb-5 mt-4 mb-5 ps-5">
+                    <h1 class="text-center mb-5"><img src="../../assets/img/report.png" width="50px"
+                            class="mb-2 hideImg"> All Reports</h1>
+
+                    <div class="d-flex justify-content-end">
+                        <button (click)="toggleFilter()" class="togglefilter"><i class="fas fa-cogs"></i></button>
+                    </div>
+
+                    <div class="filter brdr mb-5 py-4">
+                        <button (click)="closeFilter()" pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded closeFilter p-button-danger p-button-text"></button>
+                        <h2 class="mb-4 text-center">Filters Panel</h2>
+                        <form [formGroup]="filtersForm" (ngSubmit)="submitfilters(filtersForm)">
+                            <div class="row">
+                                <div class="col-md-3 my-3">
+                                    <p-dropdown formControlName="type" [showClear]="true"
+                                        (onChange)="selectBrand($event)" [options]="Type" placeholder="Type"
+                                        optionValue="id" optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-md-3 my-3">
+                                    <p-dropdown formControlName="brand" optionValue="id"
+                                        (onChange)="selectModel($event)" [options]="Brand" placeholder="Brand"
+                                        [showClear]="true" [group]="true">
+                                        <ng-template let-items pTemplate="items">
+                                            <div class="p-d-flex p-ai-center">
+                                                <div class="row justify-content-start align-items-center">
+                                                    <div class="col-3">
+                                                        <img [src]="items.img" [class]="'flag flag-' + items.value"
+                                                            style="width: 20px" />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <span>{{items.label}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template let-group pTemplate="group">
+                                            <div class="p-d-flex p-ai-center">
+                                                <div class="row justify-content-start align-items-center">
+                                                    <div class="col-3">
+                                                        <img [src]="group.img" [class]="'flag flag-' + group.value"
+                                                            style="width: 20px" />
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <span>{{group.label}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-md-3 my-3">
+                                    <p-dropdown formControlName="model" optionValue="name" [showClear]="true"
+                                        [options]="Model" placeholder="Model" [group]="true">
+                                        <ng-template let-group pTemplate="group">
+                                            <div class="p-d-flex p-ai-center d-flex justify-content-start">
+                                                <img [src]="group.img" [class]="'me-2 flag flag-' + group.value"
+                                                    style="width: 20px" />
+                                                <span class="text-center">{{group.label}}</span>
+                                            </div>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-md-3 my-3">
+                                    <p-dropdown formControlName="color" [showClear]="true" [options]="Color"
+                                        placeholder="Color" optionValue="name" optionLabel="name">
+                                        <ng-template let-group pTemplate="icon">
+                                            <div class="p-d-flex p-ai-center">
+                                                <div class="row justify-content-start align-items-center">
+                                                    <div style="height: 24px; border-radius: 50%; border: 1px solid #666;"
+                                                        [style.background]="group.icon" class="col-1">
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <span>{{group.name}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </div>
+                                <hr>
+                                <div class="col-3 my-3">
+                                    <p-dropdown formControlName="RAM" [showClear]="true" [options]="RAM"
+                                        placeholder="RAM" optionValue="value" optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-3 my-3">
+                                    <p-dropdown formControlName="ROM" [showClear]="true" [options]="ROM"
+                                        placeholder="ROM" optionValue="value" optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-3 my-3 text-center mt-3">
+
+                                    <p-dropdown formControlName="orderBy" [showClear]="true" [options]="time"
+                                        placeholder="Time" optionValue="value" optionLabel="name">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-3 mt-4 filters">
+                                    <button type="submit" class="rounded-pill">Apply Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: none;" *ngIf="empty" class="text-center realItems mt-5">
+                        <hr>
+                        <h4>No Reports Yet</h4>
+                        <p>Reports Submitted To You will appear here</p>
+                    </div>
+                    <div class="row">
+                        <div class="row skeltonItems">
+                            <div class="col-md-3 px-3 py-4 col-6">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="cover skeleton">
+                                            <img id="cover" src="" />
+                                        </div>
+
+                                        <div class="content">
+                                            <h2 id="title" class="skeleton"></h2>
+                                            <small id="subtitle" class="skeleton"></small>
+                                            <p id="about" class="skeleton"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-3 py-4 col-6">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="cover skeleton">
+                                            <img id="cover" src="" />
+                                        </div>
+
+                                        <div class="content">
+                                            <h2 id="title" class="skeleton"></h2>
+                                            <small id="subtitle" class="skeleton"></small>
+                                            <p id="about" class="skeleton"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-3 py-4 col-6">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="cover skeleton">
+                                            <img id="cover" src="" />
+                                        </div>
+
+                                        <div class="content">
+                                            <h2 id="title" class="skeleton"></h2>
+                                            <small id="subtitle" class="skeleton"></small>
+                                            <p id="about" class="skeleton"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-3 py-4 col-6">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="cover skeleton">
+                                            <img id="cover" src="" />
+                                        </div>
+
+                                        <div class="content">
+                                            <h2 id="title" class="skeleton"></h2>
+                                            <small id="subtitle" class="skeleton"></small>
+                                            <p id="about" class="skeleton"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: none;" *ngFor="let report of allReportsArray"
+                            class="col-md-3 allreportsArray realItems itembox px-3 py-5 col-6">
+                            <img routerLink="/reviews" routerLinkActive="router-link-active" *ngIf="report.status"
+                                src="../../assets/img/checked.png" width="17%" class="true p-2">
+                            <div (click)="singleReportPopup(report.reportID)" class="dashboard">
+                                <div class="cardImg">
+                                    <img [src]='report.devicePicture' class="w-50 d-block mx-auto mb-3">
+                                </div>
+                                <h5 style="text-transform: uppercase;" class="text-center">{{report.brand}}
+                                    {{report.model}}</h5>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <p *ngIf="report.status"
+                                            [style]="report.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Reviewed</p>
+                                        <p *ngIf="!report.status"
+                                            [style]="report.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Holding</p>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <p><i class="far fa-calendar date me-1"></i>{{report.created_at}}</p>
+                                    </div>
+                                    <span>Report From:</span>
+                                    <p style="text-transform: capitalize;"><i
+                                            class="fas fa-map-marker-alt text-danger me-2"></i>{{report.user.ContactInfo.government}}
+                                        | {{report.user.ContactInfo.city}}</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button *ngIf="!report.status" (click)="popup(report.reportID)"
+                                    class="rounded-pill mt-2">Submit
+                                    Review</button>
+
+                            </div>
+
+                        </div>
+
+                        <div *ngFor="let filter of filtersArray" class="col-md-3 filtersArray itembox px-3 py-5 col-6">
+                            <img routerLink="/reviews" routerLinkActive="router-link-active" *ngIf="filter.status"
+                                src="../../assets/img/checked.png" width="17%" class="true p-2">
+                            <div (click)="singleReportPopup(filter.reportID)" class="dashboard">
+                                <img [src]='filter.devicePicture' class="w-50 d-block mx-auto mb-3">
+                                <h5 style="text-transform: uppercase;" class="text-center">{{filter.brand}}
+                                    {{filter.model}}</h5>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <p *ngIf="filter.status"
+                                            [style]="filter.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Reviewed</p>
+                                        <p *ngIf="!filter.status"
+                                            [style]="filter.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Holding</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><i class="far fa-calendar date me-1"></i>{{filter.created_at}}</p>
+                                    </div>
+                                    <span>Reported From:</span>
+                                    <p style="text-transform: capitalize;"><i
+                                            class="fas fa-map-marker-alt text-danger me-2"></i>{{filter.user.ContactInfo.government}}
+                                        | {{filter.user.ContactInfo.city}}</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button *ngIf="!filter.status" (click)="popup(filter.reportID)"
+                                    class="rounded-pill mt-2">Submit
+                                    Review</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="SingleReportParentPopup justify-content-center align-items-center">
+                        <div class="container popupSingleReport pt-5 pb-4 px-5">
+                            <button (click)="closeSingleReport()" pButton pRipple type="button" icon="pi pi-times"
+                                class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                            <h2 style="font-size: 35px;" class="text-center"><img style="width: 5%;"
+                                    src="../../assets/img/employee.png"> Single Report</h2>
+                            <p style="font-size: 14px;" class="text-center mb-4">All the details you looking for!</p>
+                            <div class="row">
+                                <div class="col-md-3 justify-content-center align-items-center">
+                                    <img [src]="ownerReportObject?.devicePicture" class="w-100">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 style="font-size: 23px; text-transform: uppercase;">
+                                            {{ownerReportObject?.brand}}
+                                            {{ownerReportObject?.model}}
+                                            <small *ngIf="ownerReportObject?.serialNumber"
+                                                style="font-size: 13px;">IMEI:
+                                                ({{ownerReportObject?.serialNumber}})</small>
+                                        </h5>
+                                        <img style="width: 10%;" *ngIf="ownerReportObject?.status"
+                                            src="../../assets/img/active.png" class="p-2">
+                                    </div>
+
+                                    <div class=" d-flex justify-content-between align-items-center my-3">
+                                        <p class="details rounded-pill px-3 py-1">RAM: {{ownerReportObject?.RAM}}GB</p>
+                                        <p class="details rounded-pill px-3 py-1">ROM: {{ownerReportObject?.ROM}}GB</p>
+                                        <div
+                                            class="details rounded-pill px-3 py-1 color d-flex justify-content-start align-items-center mb-3">
+                                            <span class="me-2">Color: </span>
+                                            <div style="border: 1px solid #666"
+                                                [style.background]="ownerReportObject?.color"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <span>Created at:</span>
+                                            <p><i class="far fa-calendar date me-1"></i>
+                                                {{ownerReportObject?.created_at}}</p>
+                                        </div>
+                                        <div>
+                                            <span>Report From:</span>
+                                            <p style="text-transform: capitalize;"><i
+                                                    class="fas fa-map-marker-alt text-danger me-2"></i>{{ownerReportObject?.user.ContactInfo.government}}
+                                                | {{ownerReportObject?.user.ContactInfo.city}} |
+                                                {{ownerReportObject?.user.ContactInfo.city}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="remove">
+                                        <span>Additional Info:</span>
+                                        <p>{{ownerReportObject?.additional_info}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-5">
+                                        <button [routerLink]="['/singleReport', ownerReportObject?.reportID]"
+                                            class="singleReportBtn rounded-pill d-block ms-auto btn d-block px-3 py-1">Show
+                                            More <i class="fas fa-arrow-right ms-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="parentPopup justify-content-center align-items-center">
+                        <div class="container popup pt-5 pb-4 px-5">
+                            <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                                class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                            <h2 class="text-center mb-4"><img src="../../assets/img/seo.png"> Review</h2>
+                            <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="ms-3">Theif Name</label>
+                                                <div class="wrap-input100 validate-input"
+                                                    data-validate="Valid email is required: ex@abc.xyz">
+                                                    <input formControlName="theifName" placeholder="Name" type="text"
+                                                        class="input100 my-2">
+                                                    <span class="focus-input100"></span>
+                                                    <span class="symbol-input100">
+                                                        <i class="fas fa-user-alt"></i>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="ms-3">Theif Mobile</label>
+                                                <div class="wrap-input100 validate-input"
+                                                    data-validate="Valid email is required: ex@abc.xyz">
+                                                    <input formControlName="theifMobile" placeholder="Mobile"
+                                                        type="text" class="input100 my-2">
+                                                    <span class="focus-input100"></span>
+                                                    <span class="symbol-input100">
+                                                        <i class="fas fa-phone-alt"></i>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="ms-3">Theif NationalID</label>
+                                                <div class="wrap-input100 validate-input"
+                                                    data-validate="Valid email is required: ex@abc.xyz">
+                                                    <input formControlName="theifNatID" placeholder="ID" type="text"
+                                                        class="input100 my-2">
+                                                    <span class="focus-input100"></span>
+                                                    <span class="symbol-input100">
+                                                        <i class="fas fa-id-badge"></i>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="form-group">
+                                                    <label>Additional Info</label>
+                                                    <textarea formControlName="additional_info" placeholder="Comment"
+                                                        class="form-control my-2" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-start mt-4">
+                                                <div class="me-2">
+                                                    <p-checkbox (onChange)="termBox2($event)" id="termsBox"
+                                                        name="groupname" value="val1"></p-checkbox>
+                                                </div>
+                                                <div>
+                                                    <p style="font-size: 13px;">I confirm that the data entered
+                                                        is correct and agree to use all appropriate methods to
+                                                        communicate with me. I agree to the <a
+                                                            routerLink="/termsandconditions">terms and
+                                                            conditions.</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class=" d-flex justify-content-center align-items-center mt-3">
+                                            <div class="input-file">
+                                                <div id="oFile_upload" class="input-file-upload">
+                                                    <h4 class="text-center">Upload Thief Photo <small class="me-2"
+                                                            style="font-size: 8px;">(Optional)</small></h4>
+                                                    <img src="../../assets/img/image_placeholder.jpg">
+                                                    <input style="position: absolute; top: 0; left: 0;" type='file'
+                                                        (change)="thiefAvatar($event)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <button type="submit"
+                                    class="btn rounded-pill popupSubmitBtn mt-3 px-4 py-2 d-block ms-auto">Submit</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-smallfooter></app-smallfooter>
+</div>

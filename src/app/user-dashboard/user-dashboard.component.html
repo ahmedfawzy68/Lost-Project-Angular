@@ -1,0 +1,310 @@
+<app-navbar3></app-navbar3>
+
+
+
+<div id="skeltonSection" class="spdashboard">
+    <p-toast></p-toast>
+    <div class="container-fluid pt-5">
+
+        <div class="row mb-5">
+            <div class="col-md-3 sep pe-5 mb-5 profile">
+
+                <div class="container skeltonItems text-center mt-5">
+                    <div class="profileSkeleton">
+                        <div class="skeleton-center"></div>
+                        <div class="square circle"></div>
+                    </div>
+                </div>
+
+                <div style="display: none;" class="container realItems text-center mt-5">
+                    <div class="d-flex justify-content-center">
+                        <div class="profile-img rounded-circle" style="width: 260px; height: 260px;">
+                            <div id="file_upload">
+                                <img [src]="info?.avatar" width="260" height="260" class="profilePic">
+                            </div>
+                            <button style="background-color: #e6e6e6; width: 50px; height: 50px;" mat-mini-fab
+                                (click)="inputField.click()">
+                                <img src="../../assets/img/upload.png" class="profilei1">
+                            </button>
+                        </div>
+                        <input (change)="userAvatar($event)" #inputField type="file" hidden>
+                    </div>
+                </div>
+
+                <p style="display: none; text-transform: capitalize;" class="text-center realItems text-dark my-4">
+                    {{info?.firstName+' '+
+                    info?.lastName}}</p>
+
+
+
+                <div class="ms-3">
+                    <div class="accordion " id="accordionExample">
+
+                        <div class="skeltonItems">
+                            <div class="infoSkl">
+                                <div class="avatar"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <br>
+                            <div class="infoSkl">
+                                <div class="avatar"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <br>
+                            <div class="infoSkl">
+                                <div class="avatar"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <br>
+                            <div class="infoSkl">
+                                <div class="avatar"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                        <div style="display: none;" class="accordion-item realItems">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img src="../../assets/img/User-Icon.png" class="profileimg me-2">Personal Details
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div style="text-transform: capitalize;" class="accordion-body">
+                                    <strong>First Name:</strong><span class="ms-2">{{info?.firstName}}</span>
+                                    <br>
+                                    <strong>Last Name:</strong><span class="ms-2">{{info?.lastName}}</span>
+                                    <br>
+                                    <strong>National ID:</strong><span class="ms-2">{{info?.national_id}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: none;" class="accordion-item realItems">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <img src="../../assets/img/Contact-Icon.png" class="profileimg me-2">Contact Info
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse show"
+                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Mobile Number :</strong><span
+                                        class="ms-2">{{info?.ContactInfo?.mobile_1}}</span>
+                                    <br *ngIf="info?.ContactInfo?.mobile_2">
+                                    <strong *ngIf="info?.ContactInfo?.mobile_2">Mobile Number 2:</strong><span
+                                        class="ms-2">{{info?.ContactInfo?.mobile_2}}</span>
+                                    <br>
+                                    <strong>Current Address:</strong><span style="text-transform: capitalize;"
+                                        class="ms-2">{{info?.ContactInfo?.street}}</span>
+                                    <br>
+                                    <strong>Email:</strong><span class="ms-2">{{info?.email}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div style="display: none;" class="editProfile realItems mt-5 pt-3">
+                    <button routerLink="/userProfile" class="rounded-pill my-5">Edit Profile</button>
+                </div>
+            </div>
+            <div class="col-md-9  py-5 pe-4">
+
+                <div class="row justify-content-center align-items-center pb-5 mt-4 mb-5 ps-5">
+
+
+                    <h1 class="text-center mb-5"><img src="../../assets/img/report.png" width="50px"
+                            class="mb-2 hideImg"> Your Reports</h1>
+                    <div style="display: none;" *ngIf="empty" class="text-center mt-5 realItems">
+                        <hr>
+                        <h4>No Reports Yet</h4>
+                        <p>Reports Submitted by You will appear here</p>
+                    </div>
+
+
+                    <div class="row skeltonItems">
+                        <div class="col-md-3 px-3 py-4 col-6">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="cover skeleton">
+                                        <img id="cover" src="" />
+                                    </div>
+
+                                    <div class="content">
+                                        <h2 id="title" class="skeleton"></h2>
+                                        <small id="subtitle" class="skeleton"></small>
+                                        <p id="about" class="skeleton"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-3 py-4 col-6">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="cover skeleton">
+                                        <img id="cover" src="" />
+                                    </div>
+
+                                    <div class="content">
+                                        <h2 id="title" class="skeleton"></h2>
+                                        <small id="subtitle" class="skeleton"></small>
+                                        <p id="about" class="skeleton"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-3 py-4 col-6">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="cover skeleton">
+                                        <img id="cover" src="" />
+                                    </div>
+
+                                    <div class="content">
+                                        <h2 id="title" class="skeleton"></h2>
+                                        <small id="subtitle" class="skeleton"></small>
+                                        <p id="about" class="skeleton"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-3 py-4 col-6">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="cover skeleton">
+                                        <img id="cover" src="" />
+                                    </div>
+
+                                    <div class="content">
+                                        <h2 id="title" class="skeleton"></h2>
+                                        <small id="subtitle" class="skeleton"></small>
+                                        <p id="about" class="skeleton"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: none;" class="row realItems">
+                        <div *ngFor="let report of allReportsArray" class="col-md-3 itembox px-3 py-5 col-6">
+                            <img routerLink="/reviews" routerLinkActive="router-link-active" *ngIf="report.status"
+                                src="../../assets/img/active.png" width="18%" class="true p-2">
+                            <div class="dashboard">
+                                <div class="cardImg">
+                                    <img [src]='report.devicePicture' class="w-50 d-block mx-auto mb-3">
+                                </div>
+                                <h5 style="text-transform: uppercase;" class="text-center">{{report.brand}}
+                                    {{report.model}}</h5>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <p *ngIf="report.status"
+                                            [style]="report.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Founded</p>
+                                        <p *ngIf="!report.status"
+                                            [style]="report.status? 'color:green' : 'color:orange'"><i
+                                                class="fas fa-circle me-2"></i>Pending</p>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <p><i class="far fa-calendar date me-1"></i>{{report.created_at}}</p>
+                                    </div>
+                                    <span>Report From:</span>
+                                    <p style="text-transform: capitalize;"><i
+                                            class="fas fa-map-marker-alt text-danger me-2"></i>{{report.user.ContactInfo.government}}
+                                        | {{report.user.ContactInfo.city}}</p>
+                                </div>
+                                <div class="text-center">
+                                    <button (click)="showReport(report.reportID)" class="rounded-pill mt-2">View Report
+                                        <i class="fas fa-arrow-right"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="parentPopup justify-content-center align-items-center">
+                    <div class="container popup pt-5 pb-4 px-5">
+                        <button (click)="close()" pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded closeBtn p-button-danger p-button-text"></button>
+                        <h2 style="font-size: 35px;" class="text-center"><img style="width: 5%;"
+                                src="../../assets/img/employee.png"> Single Report</h2>
+                        <p style="font-size: 14px;" class="text-center mb-4">All the details you looking for!</p>
+                        <div class="row">
+                            <div class="col-md-3 justify-content-center align-items-center">
+                                <img [src]="thisReportObject?.devicePicture" class="w-100">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 style="font-size: 23px; text-transform: uppercase;">{{thisReportObject?.brand}}
+                                        {{thisReportObject?.model}}
+                                        <small *ngIf="thisReportObject?.serialNumber" style="font-size: 13px;">IMEI:
+                                            ({{thisReportObject?.serialNumber}})</small>
+                                    </h5>
+                                    <img style="width: 10%;" *ngIf="thisReportObject?.status"
+                                        src="../../assets/img/active.png" class="p-2">
+                                </div>
+
+                                <div class=" d-flex justify-content-between align-items-center my-3">
+                                    <p class="details rounded-pill px-3 py-1">RAM: {{thisReportObject?.RAM}}GB</p>
+                                    <p class="details rounded-pill px-3 py-1">ROM: {{thisReportObject?.ROM}}GB</p>
+                                    <div
+                                        class="details rounded-pill px-3 py-1 color d-flex justify-content-start align-items-center mb-3">
+                                        <span class="me-2">Color: </span>
+                                        <div style="border: 1px solid #666"
+                                            [style.background]="thisReportObject?.color"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <span>Created at:</span>
+                                        <p><i class="far fa-calendar date me-1"></i>
+                                            {{thisReportObject?.created_at}}</p>
+                                    </div>
+                                    <div>
+                                        <span>Report From:</span>
+                                        <p style="text-transform: capitalize;"><i
+                                                class="fas fa-map-marker-alt text-danger me-2"></i>{{thisReportObject?.user.ContactInfo.government}}
+                                            | {{thisReportObject?.user.ContactInfo.city}} |
+                                            {{thisReportObject?.user.ContactInfo.street}}</p>
+                                    </div>
+                                </div>
+                                <div *ngIf="remove">
+                                    <span>Additional Info:</span>
+                                    <p>{{thisReportObject?.additional_info}}</p>
+                                </div>
+                                <div class="d-flex justify-content-between mt-5">
+                                    <button *ngIf="!thisReportObject?.status" routerLink="/userProfile"
+                                        class="singleReportBtn rounded-pill btn d-block px-3 py-1"><i
+                                            class="fas fa-arrow-left me-2"></i> Edit Report</button>
+                                    <button [routerLink]="['/singleReport', thisReportObject?.reportID]"
+                                        class="singleReportBtn rounded-pill d-block ms-auto btn d-block px-3 py-1">Show
+                                        More <i class="fas fa-arrow-right ms-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-smallfooter></app-smallfooter>
+</div>

@@ -1,0 +1,188 @@
+<div class="gForm pb-5">
+    <app-navbar2></app-navbar2>
+    <p-toast [style]="{textTransform: 'capitalize', fontWeight:'600'}"></p-toast>
+    <div class="my-box">
+        <div class="text-center">
+            <h2><img class="mb-3" src="../../assets/img/writing.png" style="width: 50px;"> Submit Another Report</h2>
+        </div>
+        <form [formGroup]="report" (ngSubmit)="submitReport()">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12 my-3">
+                            <mat-label class="ms-3">Serial Number<small style="font-size: 8px;">(Optional)</small>
+                            </mat-label>
+                            <div class="wrap-input100 mt-2 validate-input">
+                                <input formControlName="serialNumber" class="input100" type="text" placeholder="Serial">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fas fa-qrcode"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-3">
+                            <p-dropdown formControlName="type" [showClear]="true" (onChange)="selectBrand($event)"
+                                [options]="Type" placeholder="Type" optionValue="id" optionLabel="name">
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-4 my-3">
+                            <p-dropdown formControlName="brand" optionValue="id" (onChange)="selectModel($event)"
+                                [options]="Brand" placeholder="Brand" [showClear]="true" [group]="true">
+                                <ng-template let-items pTemplate="items">
+                                    <div class="p-d-flex p-ai-center">
+                                        <div class="row justify-content-start align-items-center">
+                                            <div class="col-3">
+                                                <img [src]="items.img" [class]="'flag flag-' + items.value"
+                                                    style="width: 35px" />
+                                            </div>
+                                            <div class="col-3">
+                                                <span>{{items.label}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template let-group pTemplate="group">
+                                    <div class="p-d-flex p-ai-center">
+                                        <div class="row justify-content-start align-items-center">
+                                            <div class="col-3">
+                                                <img [src]="group.img" [class]="'flag flag-' + group.value"
+                                                    style="width: 35px" />
+                                            </div>
+                                            <div class="col-3">
+                                                <span>{{group.label}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-4 my-3">
+                            <p-dropdown (onChange)="getDevice($event)" formControlName="model" optionValue="name"
+                                [showClear]="true" [options]="Model" placeholder="Model" [group]="true">
+                                <ng-template let-group pTemplate="group">
+                                    <div class="p-d-flex p-ai-center d-flex justify-content-start">
+                                        <img [src]="group.img" [class]="'me-2 flag flag-' + group.value"
+                                            style="width: 20px" />
+                                        <span class="text-center">{{group.label}}</span>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+
+                        <div class="col-md-4 my-3">
+                            <p-dropdown formControlName="color" [showClear]="true" [options]="Color" placeholder="Color"
+                                optionValue="name" optionLabel="label">
+                                <ng-template let-group pTemplate="icon">
+                                    <div class="p-d-flex p-ai-center">
+                                        <div class="row justify-content-start align-items-center">
+                                            <div style="height: 24px; border-radius: 50%; border: 1px solid #666;"
+                                                [style.background]="group.icon" class="col-1"></div>
+                                            <div class="col-3">
+                                                <span>{{group.name}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-4 my-3">
+                            <p-dropdown formControlName="RAM" [showClear]="true" [options]="RAM" placeholder="RAM"
+                                optionValue="value" optionLabel="name">
+                            </p-dropdown>
+                        </div>
+                        <div class="col-md-4 my-3">
+                            <p-dropdown formControlName="ROM" [showClear]="true" [options]="ROM" placeholder="ROM"
+                                optionValue="value" optionLabel="name">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <p-button id="Trigger2" (click)="AddFraction()"
+                            [icon]="activeStateFraction[1] ? 'pi pi-minus' : 'pi pi-plus'" (click)="toggleFraction(1)"
+                            styleClass="p-button-text p-ml-2" label="Add Fraction"><small class="me-2"
+                                style="font-size: 8px;">(Optional)</small></p-button>
+                        <div class="fractions mt-2">
+
+                            <ul class="ks-cboxtags d-flex">
+                                <div class="col-md-6 text-center">
+                                    <p class="text-center">Front</p>
+                                    <li class="col-6">
+                                        <input type="checkbox" id="checkboxOne" formControlName="frontCrach_top" ><label for="checkboxOne">top</label>
+                                    </li>
+                                    <li class="">
+                                        <input type="checkbox" id="checkboxTwo" formControlName="frontCrach_center"><label
+                                            for="checkboxTwo">center</label>
+                                    </li>
+                                    <li class="">
+                                        <input type="checkbox" id="checkboxThree" formControlName="frontCrach_bottom"><label for="checkboxThree">bottom</label>
+                                    </li>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <p class="text-center">Back</p>
+                                    <li class="">
+                                        <input type="checkbox" id="checkboxFour" formControlName="backCrach_top"><label for="checkboxFour">top</label>
+                                    </li>
+                                    <li class="col-6">
+                                        <input type="checkbox" id="checkboxFive" formControlName="backCrach_center"><label
+                                            for="checkboxFive">center</label>
+                                    </li>
+                                    <li class="col-6">
+                                        <input type="checkbox" id="checkboxSix" formControlName="backCrach_bottom"><label
+                                            for="checkboxSix">bottom</label>
+                                    </li>
+
+                                </div>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <p-button id="Trigger2" (click)="AddComment()"
+                            [icon]="activeStateComment[1] ? 'pi pi-minus' : 'pi pi-plus'" (click)="toggleComment(1)"
+                            styleClass="p-button-text p-ml-2" label="Add Comment"><small class="me-2"
+                                style="font-size: 8px;">(Optional)</small></p-button>
+                        <div class="comment form-group">
+                            <textarea formControlName="additional_info" placeholder="Comment" class="form-control my-2"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-start mt-4">
+                        <div class="me-2">
+                            <p-checkbox id="termsBox" name="groupname" (onChange)="checkValue($event)" value="val1"></p-checkbox>
+                        </div>
+                        <div>
+                            <p style="font-size: 13px;">I confirm that the data entered is
+                                correct, and agree to submit
+                                report
+                                with the device data, search for it, and hand over the device
+                                when
+                                it is found. I agree to add photos and device data in the list
+                                of
+                                device and use all search methods and announce them after
+                                registration and use all appropriate methods to communicate with
+                                me.
+                                I agree to the <a routerLink="/termsandconditions">terms and
+                                    conditions</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="input-file">
+                        <div id="dFile_upload" class="input-file-upload">
+                            <img id="defaultImg" src="../../assets/img/devices-placeholder.jpg" class="w-100" style="border-radius: 25px;">
+                            <img id="chosenImg" class="w-100" [src]="devicePath">
+                            <input style="position: absolute; top: 0; left: 0; display: none;" disabled type='file'
+                                (change)="devicePicture()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button routerLink="userDashboard" class="btn py-2 px-4 rounded-pill cancel">Cancel</button>
+                <button class="btn py-2 px-4 rounded-pill sBtn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

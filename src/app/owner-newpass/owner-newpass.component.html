@@ -1,0 +1,49 @@
+<body class="gForm d-flex justify-content-center align-items-center">
+    
+
+    <img src="../../assets/img/lost-white.png" class="logo p-4">
+
+    <div class="container login-container">
+        <p-toast></p-toast>
+
+        <div class="row">
+            <div class="col-md-5 welcome_auth">
+                <img src="../../assets/img/newPass.png" class="w-75">
+            </div>
+            <div class="col-md-7 login-form">
+                <div class="login_form_in">
+                    <div class="auth_branding d-flex justify-content-center">
+                        <img src="../../assets/img/login.png">
+                    </div>
+                    <h1 class="auth_title py-4 mb-3 text-center text-dark">Change Password</h1>
+                    <form [formGroup]="ownerNewpass" (ngSubmit)="change(ownerNewpass)">
+                        <div class="form-group">
+                            <p class="ms-2">New Password:</p>
+                            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                <input formControlName="password" class="input100" type="password" placeholder="Password">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                  <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                            <p class="ms-2">Confirm Password:</p>
+
+                            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                <input formControlName="confirmPassword" class="input100" type="password" placeholder="Confirm">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                  <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button [disabled]="ownerNewpass.invalid" type="submit"
+                                class="rounded-pill mt-5 mb-5 btn-block">Confirm New Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

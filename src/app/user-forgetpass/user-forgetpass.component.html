@@ -1,0 +1,54 @@
+<body class="gForm d-flex justify-content-center align-items-center">
+
+    <img src="../../assets/img/lost-white.png" class="logo p-4">
+
+    <div class="container login-container">
+        <p-toast></p-toast>
+        
+        
+
+        <div class="row">
+            <div class="col-md-5 welcome_auth">
+                <img src="../../assets/img/forgot-password.png" class="w-75">
+            </div>
+            <div class="col-md-7 login-form">
+                <div class="login_form_in">
+                    <div class="auth_branding">
+                        <img src="../../assets/img/user.png">
+                    </div>
+
+                    
+
+
+                    <h1 class="auth_title py-4 text-dark">Password Reset</h1>
+                    <form [formGroup]='userForgetPass' (ngSubmit)='reset(userForgetPass)'>
+                        <div class="alert alert-success bg-soft-primary border-0" role="alert">
+                            Enter your email address and we'll send you an email with instructions to reset your
+                            password.
+                        </div>
+                        <div class="form-group">
+                            <label class="ms-4 mb-2" for="email">Email</label>
+                            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                <input formControlName="email" class="input100" type="text" name="email" placeholder="Email Address">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="userForgetPass.invalid" type="submit"
+                                class="rounded-pill mt-4 mb-5 btn-block">Reset Password</button>
+                        </div>
+                        <div class="form-group other_auth_links">
+                            <a routerLink="/login">Login</a>
+                            <a routerLink="/register">Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
